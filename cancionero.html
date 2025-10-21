@@ -16,32 +16,6 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <style>
-      /* Estilos para el campo de búsqueda */
-      .search-container {
-        max-width: 600px;
-        margin: 2rem auto 3rem;
-        position: relative;
-        text-align: center;
-      }
-      #song-search-input {
-        width: 100%;
-        padding: 0.8rem 1rem 0.8rem 2.5rem;
-        font-size: 1rem;
-        border-radius: 9999px;
-        border: 1px solid var(--color-gris-medio);
-        background-color: var(--color-gris-claro);
-        margin-bottom: 1.5rem;
-      }
-      .search-container .fa-search {
-        position: absolute;
-        left: 1rem;
-        top: 14px; /* Ajustado para el input */
-        transform: translateY(-50%);
-        color: var(--color-texto);
-        opacity: 0.5;
-      }
-    </style>
   </head>
   <body>
     <header id="main-header">
@@ -80,12 +54,20 @@
           LaCuerda.net, el mayor archivo de música cristiana.
         </p>
 
-        <!-- Formulario de Búsqueda -->
-        <button type="submit" class="cta-primary">
-          <i class="fas fa-guitar"></i> Buscar en LaCuerda.net
-        </button>
-
-        <div style="text-align: center; margin-top: 4rem">
+        <div class="search-container">
+          <form id="song-search-form">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="song-search-input"
+              placeholder="Buscar canción o artista..."
+            />
+            <button type="submit" class="cta-primary">
+              <i class="fas fa-guitar"></i> Buscar en LaCuerda.net
+            </button>
+          </form>
+        </div>
+        <div style="text-align: center; margin-top: 2rem">
           <a href="index.html" class="cta-primary">Volver a Página Principal</a>
         </div>
       </section>
@@ -136,22 +118,30 @@
       </audio>
     </div>
     <script>
-      // --- Script para la búsqueda en LaCuerda.net ---
-      const searchForm = document.getElementById("song-search-form");
-      const songSearchInput = document.getElementById("song-search-input");
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- Script para la búsqueda en LaCuerda.net ---
+        const searchForm = document.getElementById("song-search-form");
+        const songSearchInput = document.getElementById("song-search-input");
 
-      if (searchForm) {
-        searchForm.addEventListener("submit", function (event) {
-          event.preventDefault(); // Evita que el formulario se envíe de la forma tradicional
-          const query = songSearchInput.value.trim();
-          if (query) {
-            // Codifica la búsqueda para que sea segura en una URL
-            const encodedQuery = encodeURIComponent(query);
-            const searchUrl = `https://acordes.lacuerda.net/busca.php?lang=ES&exp=cristiana&canc=0&ord=0&ini=0`;
-            window.open(searchUrl, "_blank"); // Abre la búsqueda en una nueva pestaña
-          }
-        });
-      }
+        if (searchForm && songSearchInput) {
+          searchForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Evita que el formulario se envíe de la forma tradicional
+            const query = songSearchInput.value.trim();
+            if (query) {
+              // Codifica la búsqueda para que sea segura en una URL
+              const encodedQuery = encodeURIComponent(query);
+              const searchUrl = `https://acordes.lacuerda.net/busca.php?q=${encodedQuery}&exp=cristiana`; // Corrected search URL
+              window.open(searchUrl, "_blank"); // Abre la búsqueda en una nueva pestaña
+            } else {
+              // If no query, open the generic Christian music page
+              window.open(
+                "https://acordes.lacuerda.net/musica_cristiana/",
+                "_blank"
+              );
+            }
+          });
+        }
+      });
     </script>
   </body>
 </html>

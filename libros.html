@@ -16,41 +16,6 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <style>
-      /* Estilos para la cuadrícula de libros, similar a .productos-grid */
-      .book-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-      }
-      .book-card {
-        display: flex;
-        flex-direction: column;
-        padding: 2rem;
-        background-color: var(--color-gris-claro);
-        border-radius: 12px;
-        text-align: left;
-        border: 1px solid var(--color-gris-medio);
-        transition: all 0.3s ease;
-        color: var(--color-texto);
-      }
-      .book-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        border-color: var(--color-acento);
-      }
-      .book-card h3 {
-        font-size: 1.3rem;
-        margin-bottom: auto; /* Empuja el botón hacia abajo */
-        padding-bottom: 1.5rem;
-      }
-      .book-card .cta-primary {
-        margin-top: 1rem;
-        text-align: center;
-        width: 100%;
-      }
-    </style>
   </head>
   <body>
     <header id="main-header">

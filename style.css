@@ -112,6 +112,243 @@ a {
   color: var(--color-fondo) !important;
 }
 
+/* Estilos específicos para la página de predicaciones */
+.predicacion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  min-height: 300px; /* Espacio mientras cargan los videos */
+}
+.predicacion-card {
+  background-color: var(--color-gris-claro);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-gris-medio);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.predicacion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.predicacion-media {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background-color: #000;
+}
+.predicacion-media iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.predicacion-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+.predicacion-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.predicacion-content p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* Estilos específicos para la página de devocionales (similar to predicaciones) */
+.devocional-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  min-height: 300px; /* Espacio mientras cargan los videos */
+}
+.devocional-card {
+  background-color: var(--color-gris-claro);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-gris-medio);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex; /* Para el mensaje de carga */
+  flex-direction: column;
+}
+.devocional-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.devocional-media {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background-color: #000;
+}
+.devocional-media iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.devocional-content {
+  padding: 1.5rem;
+  flex-grow: 1; /* Asegura que el contenido empuje el footer de la tarjeta hacia abajo */
+}
+.devocional-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.devocional-content p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* Estilos para el campo de búsqueda (general, but also used here) */
+.search-container {
+  max-width: 600px;
+  margin: 2rem auto 3rem;
+  position: relative;
+}
+#search-input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  font-size: 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-gris-medio);
+  background-color: var(--color-gris-claro);
+}
+.search-container .fa-search {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-texto);
+  opacity: 0.5;
+}
+/* Estilos para la Paginación (general, but also used here) */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 4rem;
+}
+.pagination-btn {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--color-gris-medio);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.pagination-btn:hover {
+  background-color: var(--color-gris-claro);
+}
+.pagination-btn.active {
+  background-color: var(--color-acento);
+  color: var(--color-fondo);
+  border-color: var(--color-acento);
+  font-weight: bold;
+}
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Estilos para la cuadrícula de libros, similar a .productos-grid */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.book-card {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: var(--color-gris-claro);
+  border-radius: 12px;
+  text-align: left;
+  border: 1px solid var(--color-gris-medio);
+  transition: all 0.3s ease;
+  color: var(--color-texto);
+}
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-acento);
+}
+.book-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: auto; /* Empuja el botón hacia abajo */
+  padding-bottom: 1.5rem;
+}
+.book-card .cta-primary {
+  margin-top: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+/* Estilos para la lista de resúmenes, similar a otras listas del sitio */
+.summary-list {
+  list-style: none;
+  padding: 0;
+  margin: 3rem auto;
+  max-width: 700px;
+}
+.summary-list li {
+  margin-bottom: 1rem;
+}
+.summary-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.5rem;
+  background-color: var(--color-gris-claro);
+  color: var(--color-texto);
+  border-radius: 10px;
+  border: 1px solid var(--color-gris-medio);
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.summary-list a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+  border-color: var(--color-acento);
+  color: var(--color-acento);
+}
+.summary-list a i {
+  font-size: 1.2rem;
+  color: var(--color-acento);
+  opacity: 0.8;
+}
+
+/* Estilos para el campo de búsqueda en cancionero.html */
+.search-container #song-search-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.search-container #song-search-form #song-search-input {
+  flex-grow: 1;
+  max-width: 300px; /* Limit width on larger screens */
+  margin-bottom: 0; /* Override previous margin */
+}
+
+.search-container #song-search-form .cta-primary {
+  flex-shrink: 0;
+  width: auto; /* Default width for button */
+  margin: 0; /* Override previous margin */
+}
+
 /* ======================================================
   HERO (Sección de Alto Impacto con Fondo de Imagen)
   ======================================================
@@ -565,7 +802,6 @@ a {
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   overflow: hidden; /* Oculta el reproductor de audio al inicio */
 }
-
 .floating-player .live-tag {
   display: flex;
   align-items: center;
@@ -601,6 +837,10 @@ a {
   }
 }
 
+.floating-player:hover audio {
+  width: 250px;
+}
+
 .floating-player audio {
   width: 0; /* Oculto por defecto */
   height: 40px;
@@ -608,10 +848,279 @@ a {
 }
 
 /* Expande el reproductor al pasar el mouse */
-.floating-player:hover audio {
-  width: 250px;
+/*
+  ======================================================
+  RESPONSIVE
+  ======================================================
+*/
+/* Hamburger menu icon (hidden by default on desktop) */
+.menu-toggle {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--color-texto);
+  padding: 0.5rem;
+  z-index: 11; /* Ensure it's above other content */
 }
 
+/* General adjustments for smaller screens */
+@media (max-width: 767px) {
+  body {
+    /* Adjust padding-bottom to account for the mobile floating player */
+    padding-bottom: calc(var(--altura-footer-player) + 1rem);
+  }
+
+  /* Header */
+  #main-header {
+    padding: 1rem 1.5rem; /* Reduce header padding */
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: space-between; /* Space between logo and toggle */
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .nav-links {
+    display: none; /* Hide nav links by default on mobile */
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(
+      214,
+      219,
+      221,
+      0.95
+    ); /* Background for mobile menu */
+    position: absolute;
+    top: 100%; /* Position below header */
+    left: 0;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--color-gris-medio);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 9; /* Below the header but above main content */
+  }
+
+  .nav-links.active {
+    display: flex; /* Show when active */
+  }
+
+  .nav-links li {
+    margin-bottom: 0.8rem;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    display: block;
+  }
+
+  .cta-nav {
+    display: none; /* Hide cta-nav in header on mobile, can be moved to mobile menu if desired */
+  }
+
+  /* Hamburger menu icon */
+  .menu-toggle {
+    display: block; /* Show hamburger icon */
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 4rem 1.5rem; /* Reduce hero padding */
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 3rem); /* Adjust clamp for smaller screens */
+    margin-bottom: 1rem;
+  }
+
+  .hero .slogan {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    margin-bottom: 2rem;
+  }
+
+  .hero .descripcion {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-group {
+    flex-direction: column; /* Stack CTAs vertically */
+    gap: 1rem;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    width: 100%; /* Full width buttons */
+    max-width: 300px; /* Limit max width */
+    margin: 0 auto;
+  }
+
+  .quick-access-links {
+    flex-direction: column; /* Stack quick access links vertically */
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .access-link {
+    justify-content: center; /* Center text in access links */
+    padding: 0.8rem;
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.05
+    ); /* Slightly visible background */
+    border-radius: 8px;
+  }
+
+  /* Sections */
+  .productos,
+  .servicios,
+  .eventos-section,
+  .page-content-area {
+    padding: 4rem 1.5rem; /* Reduce section padding */
+  }
+
+  .productos h2,
+  .servicios h2,
+  .eventos-section h2 {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    margin-bottom: 2.5rem;
+  }
+
+  /* Grids */
+  .productos-grid,
+  .book-grid,
+  .devocional-grid,
+  .predicacion-grid {
+    grid-template-columns: 1fr; /* Single column for all grids on mobile */
+    gap: 1.5rem;
+  }
+
+  .predicacion-card,
+  .devocional-card,
+  .book-card {
+    padding: 1.5rem;
+  }
+
+  .predicacion-content h3,
+  .devocional-content h3,
+  .book-card h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Search Container */
+  .search-container {
+    margin: 1.5rem auto 2rem;
+  }
+
+  #search-input,
+  #song-search-input {
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    font-size: 0.95rem;
+  }
+
+  .search-container .fa-search {
+    left: 1rem;
+    top: 50%; /* Ensure it's centered vertically */
+    transform: translateY(-50%);
+  }
+
+  /* Pagination */
+  .pagination-container {
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    gap: 0.3rem;
+    margin-top: 2.5rem;
+  }
+
+  .pagination-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* Modal */
+  .modal-content {
+    margin: 10% auto; /* Adjust modal position */
+    padding: 25px;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  /* Floating Player */
+  .floating-player {
+    bottom: 0; /* Stick to the very bottom */
+    right: 0;
+    left: 0; /* Make it full width */
+    width: 100%;
+    border-radius: 0; /* No rounded corners */
+    padding: 0.5rem 1rem;
+    justify-content: center; /* Center content */
+    gap: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .floating-player .live-tag {
+    font-size: 0.8rem;
+  }
+
+  .floating-player audio {
+    width: 180px; /* Always show audio controls, smaller width */
+    height: 35px;
+  }
+
+  .floating-player:hover audio {
+    width: 180px; /* No change on hover for mobile */
+  }
+
+  /* Footer */
+  #main-footer {
+    padding: 2rem 1.5rem;
+  }
+
+  .footer-social {
+    margin-bottom: 1rem;
+  }
+
+  .footer-social p {
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-info p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Specific adjustment for very small screens if needed, e.g., < 375px */
+@media (max-width: 374px) {
+  .floating-player audio {
+    width: 150px; /* Even smaller audio player */
+  }
+}
+
+/* Desktop specific styles (undo mobile changes where necessary) */
 /*
   ======================================================
   RESPONSIVE 
@@ -620,41 +1129,35 @@ a {
 @media (min-width: 768px) {
   /* En pantallas grandes, el comportamiento de hover ya es ideal */
 }
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none; /* Hide hamburger on desktop */
+  }
+  .nav-links {
+    display: flex; /* Show nav links on desktop */
+    position: static;
+    background-color: transparent;
+    border-top: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .cta-nav {
+    display: inline-block; /* Show cta-nav on desktop */
+  }
 
-/* Footer principal (contacto) */
-#main-footer {
-  flex-direction: column;
-  text-align: center;
-  gap: 2rem;
-  /* CRÍTICO: Asegura que los bloques internos se centren horizontalmente */
-  align-items: center;
+  /* For cancionero.html specific search button on desktop */
+  .search-container #song-search-form #song-search-input {
+    max-width: 300px; /* Limit width on larger screens */
+  }
+  .search-container #song-search-form .cta-primary {
+    width: auto; /* Auto width for button */
+    margin-left: 1rem; /* Space between input and button */
+  }
+  .search-container .fa-search {
+    position: absolute; /* Restore absolute positioning */
+    transform: translateY(-50%);
+    left: 1rem;
+    top: 50%;
+    display: block; /* Ensure it's visible */
+  }
 }
-
-/* Información de Contacto (footer-info) */
-.footer-info {
-  order: 2; /* Mueve al final */
-  /* CRÍTICO: Centra el texto completo de contacto y copyright */
-  text-align: center;
-}
-
-/* Redes Sociales (footer-social) */
-.footer-social {
-  order: 1; /* Mueve al inicio */
-  /* CRÍTICO: Centra el texto "Síguenos" y los íconos */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%; /* Ocupa el ancho total para centrar mejor */
-  margin-bottom: 1.8rem; /* Espacio antes de la info de contacto */
-}
-
-.footer-social p {
-  margin-bottom: 1.8rem; /* Espacio entre "Síguenos" y los íconos */
-}
-
-.social-links {
-  /* CRÍTICO: Asegura que la lista de íconos se centre si usa flex */
-  justify-content: center;
-  width: 100%;
-}
-/* ... el resto de tu código responsive ... */
