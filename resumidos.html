@@ -6,6 +6,9 @@
     <title>Resúmenes Bíblicos | Gracia y Paz Radio</title>
 
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- Meta para el color de la barra de estado en iOS -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4a90e2" />
 
     <link
       rel="stylesheet"
@@ -351,6 +354,18 @@
         if (radioPlayer) {
           radioPlayer.play().catch(() => {
             // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
+          });
+        }
+
+        // --- Script para registrar el Service Worker (PWA) ---
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", () => {
+            navigator.serviceWorker
+              .register("/sw.js")
+              .then((reg) => console.log("Service worker registrado", reg))
+              .catch((err) =>
+                console.log("Error al registrar service worker", err)
+              );
           });
         }
       });

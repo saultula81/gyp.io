@@ -5,8 +5,29 @@
     <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Gracia y Paz Radio | Música, Mensajes y Palabra de Dios</title>
-      <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Gracia y Paz Radio: tu emisora cristiana en vivo 24/7. Disfruta de música de adoración, predicaciones, devocionales diarios y recursos para fortalecer tu fe." />
+    <link rel="canonical" href="https://TU_USUARIO.github.io/TU_REPOSITORIO/" />
 
+    <!-- Open Graph Meta Tags (para redes sociales como Facebook, WhatsApp) -->
+    <meta property="og:title" content="Gracia y Paz Radio | Una Voz de Esperanza 24/7" />
+    <meta property="og:description" content="Disfruta de música de adoración, predicaciones, devocionales diarios y recursos para fortalecer tu fe." />
+    <meta property="og:image" content="https://TU_USUARIO.github.io/TU_REPOSITORIO/fondo.png" />
+    <meta property="og:url" content="https://TU_USUARIO.github.io/TU_REPOSITORIO/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Gracia y Paz Radio" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gracia y Paz Radio | Una Voz de Esperanza 24/7" />
+    <meta name="twitter:description" content="Disfruta de música de adoración, predicaciones, devocionales diarios y recursos para fortalecer tu fe." />
+    <meta name="twitter:image" content="https://TU_USUARIO.github.io/TU_REPOSITORIO/fondo.png" />
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="manifest" href="./manifest.json" />
+    <!-- Meta para el color de la barra de estado en iOS -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4a90e2" />
     
     <link
       rel="stylesheet"
@@ -17,6 +38,24 @@
     />
     
     <link rel="stylesheet" href="style.css" />
+
+    <!-- JSON-LD para Datos Estructurados (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RadioStation",
+      "name": "Gracia y Paz Radio",
+      "description": "Emisora cristiana con programación en vivo 24/7, música de adoración, predicaciones y recursos para fortalecer la fe.",
+      "url": "https://TU_USUARIO.github.io/TU_REPOSITORIO/",
+      "logo": "https://TU_USUARIO.github.io/TU_REPOSITORIO/icons/icon-512x512.png",
+      "image": "https://TU_USUARIO.github.io/TU_REPOSITORIO/fondo.png",
+      "broadcastFrequency": {
+        "@type": "BroadcastFrequencySpecification",
+        "broadcastFrequencyValue": "online",
+        "broadcastSignalModulation": "digital"
+      }
+    }
+    </script>
 
     </head>
   <body>
@@ -68,12 +107,11 @@
         aria-label="Introducción a Gracia y Paz Radio"
       >
         
-        
-              
-         
-         
+        <hgroup>
+          <h1>Una Voz de Esperanza, 24 Horas al Día</h1>
+          <p class="slogan">GRACIA Y PAZ RADIO</p>
         </hgroup>
-       
+
         <p class="descripcion">
           Gracia y Paz Radio ofrece programación cristiana en vivo,
           predicaciones basadas en la Biblia, música de adoración y reflexiones
@@ -118,8 +156,7 @@
         aria-label="Programación y Podcasts"
       >
         
-        <h2>
-          Solo DIOS, Su Palabra y Amor </h2>
+        <h2>Nuestros Recursos Destacados</h2>
        
         <div class="productos-grid">
          
@@ -353,6 +390,16 @@
         if (radioPlayer) {
           radioPlayer.play().catch(() => {
             // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
+          });
+        }
+
+        // --- Script para registrar el Service Worker (PWA) ---
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", () => {
+            navigator.serviceWorker
+              .register("./sw.js")
+              .then((reg) => console.log("Service worker registrado", reg))
+              .catch((err) => console.log("Error al registrar service worker", err));
           });
         }
       });

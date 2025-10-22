@@ -6,6 +6,9 @@
     <title>Cancionero | Gracia y Paz Radio</title>
 
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- Meta para el color de la barra de estado en iOS -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4a90e2" />
 
     <link
       rel="stylesheet"
@@ -119,7 +122,25 @@
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // --- Script para registrar el Service Worker (PWA) ---
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", () => {
+            navigator.serviceWorker
+              .register("/sw.js")
+              .then((reg) => console.log("Service worker registrado", reg))
+              .catch((err) =>
+                console.log("Error al registrar service worker", err)
+              );
+          });
+        }
         // --- Script para el Autoplay del reproductor ---
+        const radioPlayer = document.getElementById("radio-audio");
+        if (radioPlayer) {
+          radioPlayer.play().catch(() => {
+            // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
+          });
+        }
+
         // --- Script para la búsqueda en LaCuerda.net ---
         const searchForm = document.getElementById("song-search-form");
         const songSearchInput = document.getElementById("song-search-input");
