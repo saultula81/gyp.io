@@ -69,7 +69,7 @@
       >
         
         
-                 
+              
          
          
         </hgroup>
@@ -304,6 +304,14 @@
       </nav>
     </footer>
 
+    <div class="floating-player" aria-label="Reproductor de Radio Flotante">
+      <p class="live-tag"><i class="fas fa-signal"></i> EN VIVO</p>
+      <audio id="radio-audio" controls autoplay>
+        <source src="https://stream.zeno.fm/mfer4shs398uv" type="audio/aac" />
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+
     <script>
       // --- Script para el Modal de Petición de Oración ---
       const modal = document.getElementById("modal-form");
@@ -328,6 +336,26 @@
           modal.style.display = "none";
         }
       };
+
+      // --- Script para el menú hamburguesa en móvil ---
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+
+      // --- Script para el Autoplay del reproductor ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const radioPlayer = document.getElementById("radio-audio");
+        if (radioPlayer) {
+          radioPlayer.play().catch(() => {
+            // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
+          });
+        }
+      });
     </script>
   </body>
 </html>

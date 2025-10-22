@@ -139,6 +139,16 @@
     </div>
 
     <script>
+      // --- Script para el Autoplay del reproductor ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const radioPlayer = document.getElementById("radio-audio");
+        if (radioPlayer) {
+          radioPlayer.play().catch(() => {
+            // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
+          });
+        }
+      });
+
       document.addEventListener("DOMContentLoaded", async () => {
         // --- CONFIGURACIÓN DE LA API DE YOUTUBE ---
         const API_KEY = "AIzaSyCsqrpVi-2LJM-yl9plSi-NWkNQP4el3qg";

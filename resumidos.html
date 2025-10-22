@@ -344,5 +344,16 @@
         Tu navegador no soporta el elemento de audio.
       </audio>
     </div>
+    <script>
+      // --- Script para el Autoplay del reproductor ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const radioPlayer = document.getElementById("radio-audio");
+        if (radioPlayer) {
+          radioPlayer.play().catch(() => {
+            // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
+          });
+        }
+      });
+    </script>
   </body>
 </html>
