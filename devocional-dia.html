@@ -30,12 +30,17 @@
           <li><a href="resumidos.html">Resumidos</a></li>
           <li><a href="predicaciones.html">Predicaciones</a></li>
           <li><a href="devocional-dia.html">Devocional del día</a></li>
-          <li><a href="cancionero.html" class="cta-nav">Cancionero</a></li>
+          <li>
+            <a
+              href="https://acordes.lacuerda.net/musica_cristiana/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cta-nav"
+              >Cancionero</a
+            >
+          </li>
         </ul>
       </nav>
-      <button class="menu-toggle" aria-label="Abrir menú de navegación">
-        <i class="fas fa-bars"></i>
-      </button>
     </header>
 
     <main>
@@ -44,12 +49,21 @@
         role="main"
         aria-label="Devocionales Diarios"
       >
-        <h1 class="page-title">
+        <h1 style="text-align: center">
           <i class="fas fa-bell"></i> Devocional del Día
         </h1>
-        <p class="page-subtitle">
-          Comienza o termina tu día con una reflexión de la Palabra de Dios.
-          Busca en nuestro archivo de devocionales.
+        <p
+          style="
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+          "
+        >
+          Explora nuestras series de devocionales para comenzar o terminar tu
+          día con una reflexión de la Palabra de Dios. Busca por título o tema
+          en nuestro archivo.
         </p>
 
         <!-- Campo de Búsqueda -->
@@ -62,12 +76,10 @@
           />
         </div>
 
-        <!-- Contenedor para los devocionales (se llenará con JavaScript) -->
-        <div class="devocional-grid" id="devocional-grid">
-          <p id="loading-message">Cargando devocionales...</p>
+        <!-- Contenedor para las playlists de devocionales -->
+        <div class="playlist-grid" id="playlist-container">
+          <p id="loading-message">Cargando series de devocionales...</p>
         </div>
-
-        <div class="pagination-container" id="pagination-container"></div>
 
         <p
           id="no-results"
@@ -76,7 +88,7 @@
           No se encontraron devocionales que coincidan con tu búsqueda.
         </p>
 
-        <div class="text-center">
+        <div style="text-align: center; margin-top: 4rem">
           <a href="index.html" class="cta-primary">Volver a Página Principal</a>
         </div>
       </section>
@@ -101,29 +113,17 @@
         <p>Síguenos:</p>
         <ul class="social-links">
           <li>
-            <a
-              href="URL_INSTAGRAM"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Síguenos en Instagram"
+            <a href="URL_INSTAGRAM" target="_blank" rel="noopener noreferrer"
               ><i class="fab fa-instagram"></i
             ></a>
           </li>
           <li>
-            <a
-              href="URL_FACEBOOK"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Síguenos en Facebook"
+            <a href="URL_FACEBOOK" target="_blank" rel="noopener noreferrer"
               ><i class="fab fa-facebook-f"></i
             ></a>
           </li>
           <li>
-            <a
-              href="URL_YOUTUBE"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visita nuestro canal de YouTube"
+            <a href="URL_YOUTUBE" target="_blank" rel="noopener noreferrer"
               ><i class="fab fa-youtube"></i
             ></a>
           </li>
@@ -139,30 +139,53 @@
       </audio>
     </div>
 
-    <!-- Carga el script reutilizable -->
     <script src="youtube-loader.js"></script>
-    <!-- Carga el script principal del sitio -->
-    <script src="main.js"></script>
-
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // --- Configuración específica para la página de Devocionales ---
+        // --- INICIALIZACIÓN GENERAL ---
+        initializeRadioPlayer();
+        registerServiceWorker();
+
+        // --- CONFIGURACIÓN DE YOUTUBE LOADER ---
         initializeYouTubePlaylist({
           apiKey: "AIzaSyAt-gPi1yFCurjJHEgR_nX16cRLTuMY7Po",
-          // Para la prueba, solo se carga la primera playlist. Las demás se mantienen comentadas.
-          playlistIds: ["PLXaZBqL0BjeTERkDzC8H5eq1z8u27pJkN"],
-          // "PLXaZBqL0BjeQyfspyJsZyCUFyuYMkX-RJ",
-          // "PLXaZBqL0BjeSf1spsP3525y4BQLb6iKwT",
-          // "PLXaZBqL0BjeTYYG3_zrXBIpRDzRlxNNNU",
-          // "PLXaZBqL0BjeTy6gE3mC156kdcTb5NO5Pm",
-          containerId: "devocional-grid",
-          cardClass: "devocional-card",
-          itemsPerPage: 12,
+          playlistIds: [
+            "PLXaZBqL0BjeTERkDzC8H5eq1z8u27pJkN",
+            "PLXaZBqL0BjeQyfspyJsZyCUFyuYMkX-RJ",
+            "PLXaZBqL0BjeSf1spsP3525y4BQLb6iKwT",
+            "PLXaZBqL0BjeTYYG3_zrXBIpRDzRlxNNNU",
+            "PLXaZBqL0BjeTy6gE3mC156kdcTb5NO5Pm",
+            "PLbR4Dt3UlFy22S79r6X6AXVMoVZYYLb5P", // La playlist original
+          ],
+          containerId: "playlist-container",
+          loadingMessageId: "loading-message",
           searchInputId: "search-input",
           noResultsId: "no-results",
-          paginationContainerId: "pagination-container",
-          loadingMessageId: "loading-message",
+          renderAs: "playlists", // Renderizar como tarjetas de playlist
         });
+
+        // --- FUNCIONES AUXILIARES ---
+        function initializeRadioPlayer() {
+          const radioPlayer = document.getElementById("radio-audio");
+          if (radioPlayer) {
+            radioPlayer.play().catch(() => {
+              // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
+            });
+          }
+        }
+
+        function registerServiceWorker() {
+          if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+              navigator.serviceWorker
+                .register("/sw.js")
+                .then((reg) => console.log("Service worker registrado", reg))
+                .catch((err) =>
+                  console.log("Error al registrar service worker", err)
+                );
+            });
+          }
+        }
       });
     </script>
   </body>

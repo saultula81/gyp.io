@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Videos de la Playlist | Gracia y Paz Radio</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="main-header">
+      <div class="logo">GRACIA Y PAZ RADIO</div>
+      <nav aria-label="Navegación principal del sitio">
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="libros.html">Libros Cristianos</a></li>
+          <li><a href="resumidos.html">Resumidos</a></li>
+          <li><a href="predicaciones.html">Predicaciones</a></li>
+          <li><a href="devocional-dia.html">Devocional del día</a></li>
+          <li>
+            <a
+              href="https://acordes.lacuerda.net/musica_cristiana/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cta-nav"
+              >Cancionero</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section
+        class="page-content-area"
+        role="main"
+        aria-label="Videos de la playlist"
+      >
+        <h1 id="playlist-title" style="text-align: center">
+          Cargando videos...
+        </h1>
+        <p
+          id="playlist-description"
+          style="
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+          "
+        ></p>
+
+        <div class="search-container">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Buscar en esta playlist..."
+          />
+        </div>
+
+        <div class="predicacion-grid" id="video-grid">
+          <p id="loading-message">Cargando videos...</p>
+        </div>
+
+        <div class="pagination-container" id="pagination-container"></div>
+
+        <p
+          id="no-results"
+          style="text-align: center; display: none; margin-top: 2rem"
+        >
+          No se encontraron videos que coincidan con tu búsqueda.
+        </p>
+
+        <div style="text-align: center; margin-top: 4rem">
+          <a href="predicaciones.html" class="cta-primary"
+            >Volver a todas las playlists</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <hr />
+
+    <footer id="main-footer">
+      <!-- ... tu footer ... -->
+    </footer>
+
+    <div class="floating-player" aria-label="Reproductor de Radio Flotante">
+      <!-- ... tu reproductor ... -->
+    </div>
+
+    <script src="youtube-loader.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const playlistId = urlParams.get("id");
+
+        if (!playlistId) {
+          document.getElementById("playlist-title").innerText =
+            "Error: No se especificó una playlist.";
+          document.getElementById("loading-message").style.display = "none";
+          return;
+        }
+
+        // Usamos una función del loader para obtener solo los detalles de la playlist
+        const API_KEY = "AIzaSyAt-gPi1yFCurjJHEgR_nX16cRLTuMY7Po";
+        const detailsUrl = `https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=${playlistId}&key=${API_KEY}`;
+
+        fetch(detailsUrl)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.items && data.items.length > 0) {
+              const snippet = data.items[0].snippet;
+              document.getElementById("playlist-title").innerText =
+                snippet.title;
+              document.title = `${snippet.title} | Gracia y Paz Radio`;
+              document.getElementById("playlist-description").innerText =
+                snippet.description;
+            }
+          });
+
+        // Ahora inicializamos el loader para que cargue los videos de ESA playlist
+        initializeYouTubePlaylist({
+          apiKey: API_KEY,
+          playlistId: playlistId, // Solo el ID de la URL
+          containerId: "video-grid",
+          cardClass: "predicacion-card",
+          itemsPerPage: 12,
+          searchInputId: "search-input",
+          noResultsId: "no-results",
+          paginationContainerId: "pagination-container",
+          loadingMessageId: "loading-message",
+          renderAs: "videos", // Indicamos que queremos renderizar videos
+        });
+      });
+    </script>
+  </body>
+</html>
