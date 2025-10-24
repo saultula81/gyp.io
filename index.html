@@ -8,19 +8,21 @@
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Gracia y Paz Radio: tu emisora cristiana en vivo 24/7. Disfruta de música de adoración, predicaciones, devocionales diarios y recursos para fortalecer tu fe." />
-    <link rel="canonical" href="https://saultula81/GyP.io/" />
+    <link rel="canonical" href="https://saultula81.github.io/GyP.io/" />
 
     <!-- Open Graph Meta Tags (para redes sociales como Facebook, WhatsApp) -->
+    <meta property="og:title" content="Gracia y Paz Radio | Una Voz de Esperanza 24/7" />
     <meta property="og:description" content="Disfruta de música de adoración, predicaciones, devocionales diarios y recursos para fortalecer tu fe." />
-    <meta property="og:image" content="https://saultula81/GyP.io/fondo.png" />
-    <meta property="og:url" content="https://saultula81/GyP.io/" />
+    <meta property="og:image" content="https://saultula81.github.io/GyP.io/fondo.png" />
+    <meta property="og:url" content="https://saultula81.github.io/GyP.io/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Gracia y Paz Radio" />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gracia y Paz Radio | Una Voz de Esperanza 24/7" />
     <meta name="twitter:description" content="Disfruta de música de adoración, predicaciones, devocionales diarios y recursos para fortalecer tu fe." />
-    <meta name="twitter:image" content="https://saultula81/GyP.io/fondo.png" />
+    <meta name="twitter:image" content="https://saultula81.github.io/GyP.io/fondo.png" />
 
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="manifest" href="./manifest.json" />
@@ -44,9 +46,9 @@
       "@type": "RadioStation",
       "name": "Gracia y Paz Radio",
       "description": "Emisora cristiana con programación en vivo 24/7, música de adoración, predicaciones y recursos para fortalecer la fe.",
-      "url": "https://TU_USUARIO.github.io/TU_REPOSITORIO/",
-      "logo": "https://TU_USUARIO.github.io/TU_REPOSITORIO/icons/icon-512x512.png",
-      "image": "https://TU_USUARIO.github.io/TU_REPOSITORIO/fondo.png",
+      "url": "https://saultula81.github.io/GyP.io/",
+      "logo": "https://saultula81.github.io/GyP.io/icons/icon-512x512.png",
+      "image": "https://saultula81.github.io/GyP.io/fondo.png",
       "broadcastFrequency": {
         "@type": "BroadcastFrequencySpecification",
         "broadcastFrequencyValue": "online",
@@ -76,15 +78,7 @@
           
           <li><a href="devocional-dia.html">Devocional del día</a></li>
 
-          <li>
-            <a
-              href="https://acordes.lacuerda.net/musica_cristiana/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="cta-nav"
-              >Cancionero</a
-            >
-          </li>
+          <li><a href="cancionero.html" class="cta-nav">Cancionero</a></li>
          
         </ul>
        
@@ -321,17 +315,29 @@
 
         <ul class="social-links">
           <li>
-            <a href="URL_INSTAGRAM" target="_blank" rel="noopener noreferrer"
+            <a
+              href="URL_INSTAGRAM"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Síguenos en Instagram"
               ><i class="fab fa-instagram"></i
             ></a>
           </li>
           <li>
-            <a href="URL_FACEBOOK" target="_blank" rel="noopener noreferrer"
+            <a
+              href="URL_FACEBOOK"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Síguenos en Facebook"
               ><i class="fab fa-facebook-f"></i
             ></a>
           </li>
           <li>
-            <a href="URL_YOUTUBE" target="_blank" rel="noopener noreferrer"
+            <a
+              href="URL_YOUTUBE"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visita nuestro canal de YouTube"
               ><i class="fab fa-youtube"></i
             ></a>
           </li>
@@ -347,59 +353,33 @@
       </audio>
     </div>
 
+    <!-- Carga el script principal del sitio -->
+    <script src="main.js"></script>
     <script>
       // --- Script para el Modal de Petición de Oración ---
-      const modal = document.getElementById("modal-form");
-      const btn = document.getElementById("abrir-modal");
-      const span = document.getElementsByClassName("cerrar")[0];
-
-      if (btn) {
-        btn.onclick = function (e) {
-          e.preventDefault();
-          modal.style.display = "block";
-        };
-      }
-
-      if (span) {
-        span.onclick = function () {
-          modal.style.display = "none";
-        };
-      }
-
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
-
-      // --- Script para el menú hamburguesa en móvil ---
-      const menuToggle = document.querySelector(".menu-toggle");
-      const navLinks = document.querySelector(".nav-links");
-
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener("click", () => {
-          navLinks.classList.toggle("active");
-        });
-      }
-
-      // --- Script para el Autoplay del reproductor ---
       document.addEventListener("DOMContentLoaded", () => {
-        const radioPlayer = document.getElementById("radio-audio");
-        if (radioPlayer) {
-          radioPlayer.play().catch(() => {
-            // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
-          });
+        const modal = document.getElementById("modal-form");
+        const btn = document.getElementById("abrir-modal");
+        const span = document.getElementsByClassName("cerrar")[0];
+
+        if (btn) {
+          btn.onclick = function (e) {
+            e.preventDefault();
+            modal.style.display = "block";
+          };
         }
 
-        // --- Script para registrar el Service Worker (PWA) ---
-        if ("serviceWorker" in navigator) {
-          window.addEventListener("load", () => {
-            navigator.serviceWorker
-              .register("./sw.js")
-              .then((reg) => console.log("Service worker registrado", reg))
-              .catch((err) => console.log("Error al registrar service worker", err));
-          });
+        if (span) {
+          span.onclick = function () {
+            modal.style.display = "none";
+          };
         }
+
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
       });
     </script>
   </body>

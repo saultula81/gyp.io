@@ -30,17 +30,12 @@
           <li><a href="resumidos.html">Resumidos</a></li>
           <li><a href="predicaciones.html">Predicaciones</a></li>
           <li><a href="devocional-dia.html">Devocional del día</a></li>
-          <li>
-            <a
-              href="https://acordes.lacuerda.net/musica_cristiana/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="cta-nav"
-              >Cancionero</a
-            >
-          </li>
+          <li><a href="cancionero.html" class="cta-nav">Cancionero</a></li>
         </ul>
       </nav>
+      <button class="menu-toggle" aria-label="Abrir menú de navegación">
+        <i class="fas fa-bars"></i>
+      </button>
     </header>
 
     <main>
@@ -49,21 +44,12 @@
         role="main"
         aria-label="Devocionales Diarios"
       >
-        <h1 style="text-align: center">
+        <h1 class="page-title">
           <i class="fas fa-bell"></i> Devocional del Día
         </h1>
-        <p
-          style="
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 1rem;
-            font-size: 1.1rem;
-            opacity: 0.9;
-          "
-        >
+        <p class="page-subtitle">
           Comienza o termina tu día con una reflexión de la Palabra de Dios.
-          Busca en nuestro archivo de devocionales cargados directamente desde
-          nuestro canal.
+          Busca en nuestro archivo de devocionales.
         </p>
 
         <!-- Campo de Búsqueda -->
@@ -90,7 +76,7 @@
           No se encontraron devocionales que coincidan con tu búsqueda.
         </p>
 
-        <div style="text-align: center; margin-top: 4rem">
+        <div class="text-center">
           <a href="index.html" class="cta-primary">Volver a Página Principal</a>
         </div>
       </section>
@@ -115,17 +101,29 @@
         <p>Síguenos:</p>
         <ul class="social-links">
           <li>
-            <a href="URL_INSTAGRAM" target="_blank" rel="noopener noreferrer"
+            <a
+              href="URL_INSTAGRAM"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Síguenos en Instagram"
               ><i class="fab fa-instagram"></i
             ></a>
           </li>
           <li>
-            <a href="URL_FACEBOOK" target="_blank" rel="noopener noreferrer"
+            <a
+              href="URL_FACEBOOK"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Síguenos en Facebook"
               ><i class="fab fa-facebook-f"></i
             ></a>
           </li>
           <li>
-            <a href="URL_YOUTUBE" target="_blank" rel="noopener noreferrer"
+            <a
+              href="URL_YOUTUBE"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visita nuestro canal de YouTube"
               ><i class="fab fa-youtube"></i
             ></a>
           </li>
@@ -141,148 +139,31 @@
       </audio>
     </div>
 
+    <!-- Carga el script reutilizable -->
+    <script src="youtube-loader.js"></script>
+    <!-- Carga el script principal del sitio -->
+    <script src="main.js"></script>
+
     <script>
-      // --- Script para el Autoplay del reproductor ---
       document.addEventListener("DOMContentLoaded", () => {
-        const radioPlayer = document.getElementById("radio-audio");
-        if (radioPlayer) {
-          radioPlayer.play().catch(() => {
-            // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
-          });
-        }
-
-        // --- Script para registrar el Service Worker (PWA) ---
-        if ("serviceWorker" in navigator) {
-          window.addEventListener("load", () => {
-            navigator.serviceWorker
-              .register("/sw.js")
-              .then((reg) => console.log("Service worker registrado", reg))
-              .catch((err) =>
-                console.log("Error al registrar service worker", err)
-              );
-          });
-        }
-      });
-
-      document.addEventListener("DOMContentLoaded", async () => {
-        // --- CONFIGURACIÓN DE LA API DE YOUTUBE ---
-        const API_KEY = "AIzaSyAt-gPi1yFCurjJHEgR_nX16cRLTuMY7Po";
-        const PLAYLIST_ID = "PLbR4Dt3UlFy22S79r6X6AXVMoVZYYLb5P";
-        const ITEMS_PER_PAGE = 12; // Videos a mostrar por página
-
-        let allDevocionales = []; // Almacenará todos los videos cargados.
-        let filteredDevocionales = [];
-        let currentPage = 1;
-
-        const grid = document.getElementById("devocional-grid");
-        const searchInput = document.getElementById("search-input");
-        const noResultsMessage = document.getElementById("no-results");
-        const paginationContainer = document.getElementById(
-          "pagination-container"
-        );
-        const loadingMessage = document.getElementById("loading-message");
-
-        // Carga TODOS los videos de la playlist, manejando la paginación de la API
-        async function fetchAllDevocionales() {
-          let nextPageToken = "";
-          let items = [];
-          try {
-            do {
-              const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${PLAYLIST_ID}&key=${API_KEY}&maxResults=50&pageToken=${nextPageToken}`;
-              const response = await fetch(url);
-              if (!response.ok)
-                throw new Error(`Error de red: ${response.statusText}`);
-              const data = await response.json();
-
-              items.push(...data.items);
-              nextPageToken = data.nextPageToken;
-            } while (nextPageToken);
-
-            allDevocionales = items.map((item) => ({
-              videoId: item.snippet.resourceId.videoId,
-              title: item.snippet.title,
-              description: item.snippet.description.substring(0, 150) + "...",
-            }));
-
-            filteredDevocionales = [...allDevocionales];
-            displayPage(1);
-          } catch (error) {
-            console.error("Error al cargar los devocionales:", error);
-            loadingMessage.innerHTML = `<p style="color: red; text-align: center; grid-column: 1 / -1;">Error al cargar los devocionales. Revisa la configuración de la API Key y el ID de la Playlist en el código.</p>`;
-          }
-        }
-
-        // Muestra una página específica de videos
-        function displayPage(page) {
-          currentPage = page;
-          grid.innerHTML = "";
-          noResultsMessage.style.display = "none";
-
-          const start = (currentPage - 1) * ITEMS_PER_PAGE;
-          const end = start + ITEMS_PER_PAGE;
-          const paginatedItems = filteredDevocionales.slice(start, end);
-
-          if (filteredDevocionales.length === 0) {
-            noResultsMessage.style.display = "block";
-          } else {
-            paginatedItems.forEach(renderCard);
-          }
-          setupPagination();
-        }
-
-        // Renderiza una sola tarjeta de video
-        function renderCard(devocional) {
-          const card = document.createElement("article");
-          card.className = "devocional-card";
-          card.innerHTML = `
-              <div class="devocional-media">
-                <iframe src="https://www.youtube.com/embed/${devocional.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div class="devocional-content">
-                <h3>${devocional.title}</h3>
-                <p>${devocional.description}</p>
-              </div>
-            `;
-          grid.appendChild(card);
-        }
-
-        // Crea los botones de paginación
-        function setupPagination() {
-          paginationContainer.innerHTML = "";
-          const pageCount = Math.ceil(
-            filteredDevocionales.length / ITEMS_PER_PAGE
-          );
-          if (pageCount <= 1) return;
-
-          for (let i = 1; i <= pageCount; i++) {
-            const btn = document.createElement("button");
-            btn.className = "pagination-btn";
-            btn.innerText = i;
-            if (i === currentPage) {
-              btn.classList.add("active");
-            }
-            btn.addEventListener("click", () => displayPage(i));
-            paginationContainer.appendChild(btn);
-          }
-        }
-
-        // Filtra los devocionales según la búsqueda
-        function filterDevocionales() {
-          const searchTerm = searchInput.value.toLowerCase();
-          filteredDevocionales = allDevocionales.filter(
-            (d) =>
-              d.title.toLowerCase().includes(searchTerm) ||
-              d.description.toLowerCase().includes(searchTerm)
-          );
-          displayPage(1); // Vuelve a la primera página de los resultados filtrados
-        }
-
-        searchInput.addEventListener("input", filterDevocionales);
-
-        // Carga inicial de todos los devocionales
-        fetchAllDevocionales();
+        // --- Configuración específica para la página de Devocionales ---
+        initializeYouTubePlaylist({
+          apiKey: "AIzaSyAt-gPi1yFCurjJHEgR_nX16cRLTuMY7Po",
+          // Para la prueba, solo se carga la primera playlist. Las demás se mantienen comentadas.
+          playlistIds: ["PLXaZBqL0BjeTERkDzC8H5eq1z8u27pJkN"],
+          // "PLXaZBqL0BjeQyfspyJsZyCUFyuYMkX-RJ",
+          // "PLXaZBqL0BjeSf1spsP3525y4BQLb6iKwT",
+          // "PLXaZBqL0BjeTYYG3_zrXBIpRDzRlxNNNU",
+          // "PLXaZBqL0BjeTy6gE3mC156kdcTb5NO5Pm",
+          containerId: "devocional-grid",
+          cardClass: "devocional-card",
+          itemsPerPage: 12,
+          searchInputId: "search-input",
+          noResultsId: "no-results",
+          paginationContainerId: "pagination-container",
+          loadingMessageId: "loading-message",
+        });
       });
     </script>
   </body>
 </html>
-
