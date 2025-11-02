@@ -404,19 +404,3 @@
     </script>
   </body>
 </html>
-          });
-        }
-
-        // --- Script para registrar el Service Worker (PWA) ---
-        if ("serviceWorker" in navigator) {
-          window.addEventListener("load", () => {
-            navigator.serviceWorker
-              .register("./sw.js")
-              .then((reg) => console.log("Service worker registrado", reg))
-              .catch((err) => console.log("Error al registrar service worker", err));
-          });
-        }
-      });
-    </script>
-  </body>
-</html>
