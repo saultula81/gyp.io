@@ -373,12 +373,14 @@
         // --- INICIALIZACIÓN GENERAL ---
         initializeModal();
         initializeMobileMenu();
-        initializeRadioPlayer();
         registerServiceWorker();
+        initializePWAInstall(); // Lógica para la instalación de PWA
+        initializeRadioPlayer(); // Mover después para evitar problemas con autoplay
 
         // --- FUNCIONES AUXILIARES ---
         function initializeModal() {
           const modal = document.getElementById("modal-form");
+          if (!modal) return;
           const btn = document.getElementById("abrir-modal");
           const span = document.getElementsByClassName("cerrar")[0];
 
@@ -420,6 +422,54 @@
                 .catch((err) => console.log("Error al registrar service worker", err));
             });
           }
+        }
+
+        function initializePWAInstall() {
+          // No mostrar el modal si la app ya está instalada
+          if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+            console.log('La PWA ya está instalada.');
+            return;
+          }
+
+          const installModal = document.getElementById("pwa-install-modal");
+          const installBtn = document.getElementById("pwa-install-btn");
+          const laterBtn = document.getElementById("pwa-later-btn");
+          let deferredPrompt;
+
+          if (!installModal || !installBtn || !laterBtn) return;
+
+          window.addEventListener("beforeinstallprompt", (e) => {
+            // Prevenir que el mini-infobar aparezca en Chrome
+            e.preventDefault();
+            // Guardar el evento para que pueda ser disparado más tarde.
+            deferredPrompt = e;
+            // Mostrar nuestro modal de instalación personalizado
+            installModal.style.display = "block";
+            console.log("`beforeinstallprompt` event was fired.");
+          });
+
+          installBtn.addEventListener("click", async () => {
+            if (!deferredPrompt) return;
+            // Ocultar nuestro modal
+            installModal.style.display = "none";
+            // Mostrar el prompt de instalación del navegador
+            deferredPrompt.prompt();
+            // Esperar a que el usuario responda al prompt
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`User response to the install prompt: ${outcome}`);
+            // Ya no podemos usar el evento, lo descartamos
+            deferredPrompt = null;
+          });
+
+          laterBtn.addEventListener("click", () => {
+            installModal.style.display = "none";
+          });
+
+          window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
+            installModal.style.display = 'none';
+            deferredPrompt = null;
+          });
         }
       });
     </script>
