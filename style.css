@@ -983,7 +983,8 @@ a {
   }
 
   .cta-nav {
-    display: none; /* Hide cta-nav in header on mobile, can be moved to mobile menu if desired */
+    /* Ocultamos solo el de cancionero, pero no el de instalar si aparece */
+    display: none;
   }
 
   /* Hamburger menu icon */
@@ -1245,7 +1246,7 @@ a {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
-  align-items: center;
+  align-items: center; /* Centrado vertical */
   justify-content: center;
 }
 
@@ -1360,10 +1361,11 @@ a {
   height: auto;
 }
 
+/* En móvil, subimos el botón de WhatsApp para que no lo tape el reproductor */
 @media (max-width: 767px) {
   .whatsapp-flotante {
-    top: auto; /* Restablecer 'top' para móvil */
-    bottom: 1.5rem; /* Volver a la posición inferior en móvil */
-    left: 1.5rem;
+    bottom: calc(
+      var(--altura-footer-player) + 1rem
+    ); /* 65px + 16px = 81px desde abajo */
   }
 }
