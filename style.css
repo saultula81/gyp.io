@@ -1336,7 +1336,7 @@ a {
 */
 .whatsapp-flotante {
   position: fixed;
-  bottom: 1.5rem;
+  top: 7rem; /* Ajustado para no superponerse con el header */
   left: 1.5rem;
   width: 60px;
   height: 60px;
@@ -1358,4 +1358,12 @@ a {
 .whatsapp-flotante img {
   width: 36px; /* Tamaño del ícono dentro del círculo */
   height: auto;
+}
+
+@media (max-width: 767px) {
+  .whatsapp-flotante {
+    top: auto; /* Restablecer 'top' para móvil */
+    bottom: 1.5rem; /* Volver a la posición inferior en móvil */
+    left: 1.5rem;
+  }
 }
