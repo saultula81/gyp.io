@@ -297,6 +297,26 @@
           </form>
         </div>
       </div>
+
+      <!-- Modal de Instalación PWA -->
+      <div id="pwa-install-modal" class="pwa-modal" role="dialog" aria-modal="true" aria-labelledby="pwa-modal-title">
+        <div class="pwa-modal-content">
+          <img src="icons/icon-192x192.png" alt="Logo Gracia y Paz Radio" class="pwa-modal-icon">
+          <h3 id="pwa-modal-title">¡Instala Gracia y Paz Radio!</h3>
+          <p>
+            Añade nuestra aplicación a tu pantalla de inicio para un acceso rápido y disfrutar de la radio sin conexión.
+          </p>
+          <div class="pwa-modal-buttons">
+            <button id="pwa-install-btn" class="cta-primary">
+              <i class="fas fa-download"></i> Instalar
+            </button>
+            <button id="pwa-later-btn" class="cta-secondary">
+              Ahora no
+            </button>
+          </div>
+        </div>
+      </div>
+
     </main>
 
     <hr />
@@ -347,6 +367,7 @@
       </audio>
     </div>
 
+    <script src="main.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         // --- INICIALIZACIÓN GENERAL ---
