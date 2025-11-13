@@ -66,6 +66,35 @@
           en nuestro archivo.
         </p>
 
+        <!-- Botones para Compartir -->
+        <div class="share-buttons">
+          <p>¡Comparte esta bendición!</p>
+          <div>
+            <button id="native-share-btn" class="share-button share-generic">
+              <i class="fas fa-share-alt"></i> Compartir
+            </button>
+            <a
+              id="whatsapp-share-btn"
+              href="#"
+              class="share-button share-whatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Compartir en WhatsApp"
+            >
+              <img src="icons/cm.png" alt="WhatsApp" class="share-icon-img" />
+            </a>
+            <a
+              id="facebook-share-btn"
+              href="#"
+              class="share-button share-facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Compartir en Facebook"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </div>
+        </div>
         <!-- Campo de Búsqueda -->
         <div class="search-container">
           <i class="fas fa-search"></i>
@@ -109,26 +138,6 @@
           derechos reservados.
         </p>
       </div>
-      <nav class="footer-social" aria-label="Redes Sociales">
-        <p>Síguenos:</p>
-        <ul class="social-links">
-          <li>
-            <a href="URL_INSTAGRAM" target="_blank" rel="noopener noreferrer"
-              ><i class="fab fa-instagram"></i
-            ></a>
-          </li>
-          <li>
-            <a href="URL_FACEBOOK" target="_blank" rel="noopener noreferrer"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-          </li>
-          <li>
-            <a href="URL_YOUTUBE" target="_blank" rel="noopener noreferrer"
-              ><i class="fab fa-youtube"></i
-            ></a>
-          </li>
-        </ul>
-      </nav>
     </footer>
 
     <div class="floating-player" aria-label="Reproductor de Radio Flotante">
@@ -139,11 +148,23 @@
       </audio>
     </div>
 
+    <!-- Botón Flotante de WhatsApp -->
+    <a
+      href="https://api.whatsapp.com/send?phone=+5491166508379&text="
+      class="whatsapp-flotante"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contactar por WhatsApp"
+    >
+      <img src="icons/wt.png" alt="WhatsApp" />
+    </a>
+
     <script src="youtube-loader.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         // --- INICIALIZACIÓN GENERAL ---
         initializeRadioPlayer();
+        initializeShareButtons();
         registerServiceWorker();
 
         // --- CONFIGURACIÓN DE YOUTUBE LOADER ---
@@ -171,6 +192,38 @@
             radioPlayer.play().catch(() => {
               // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
             });
+          }
+        }
+
+        function initializeShareButtons() {
+          const nativeShareBtn = document.getElementById("native-share-btn");
+          const whatsappBtn = document.getElementById("whatsapp-share-btn");
+          const facebookBtn = document.getElementById("facebook-share-btn");
+
+          const shareData = {
+            title: "Devocional del Día | Gracia y Paz Radio",
+            text: "Te invito a ver las series de devocionales en Gracia y Paz Radio. ¡Una bendición para tu día!",
+            url: window.location.href,
+          };
+
+          // Fallback links
+          whatsappBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+            shareData.text + " " + shareData.url
+          )}`;
+          facebookBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+            shareData.url
+          )}`;
+
+          if (navigator.share) {
+            nativeShareBtn.addEventListener("click", async () => {
+              try {
+                await navigator.share(shareData);
+              } catch (err) {
+                console.error("Error al compartir:", err);
+              }
+            });
+          } else {
+            nativeShareBtn.style.display = "none"; // Ocultar si la API no es compatible
           }
         }
 

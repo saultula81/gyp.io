@@ -415,7 +415,6 @@ a {
   position: relative;
   overflow: hidden;
   color: #9e9797;
-
   /* CONFIGURACIÓN DE IMAGEN DE FONDO */
   background: url("fondo.png") no-repeat center center/cover;
 }
@@ -614,6 +613,12 @@ a {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   border-color: var(--color-acento);
+}
+
+/* Asegurar que el texto dentro de la tarjeta-enlace no cambie de color */
+.producto,
+.producto:visited {
+  color: var(--color-texto);
 }
 
 /* SECCION SERVICIOS (Estudios Bíblicos) */
@@ -1266,25 +1271,91 @@ a {
   }
 }
 
-.pwa-modal-icon {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 1.5rem;
+/* Estilo para íconos de redes sociales personalizados (imágenes) */
+.social-icon-img {
+  height: 24px; /* Ajusta la altura para que coincida con los otros íconos */
+  height: 36px; /* Aumentar el tamaño del ícono */
+  width: auto;
+  vertical-align: middle; /* Asegura una buena alineación vertical */
+  transition: opacity 0.3s ease;
 }
 
-.pwa-modal-content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+/* --- Estilos para Botones de Compartir --- */
+/* Eliminar las reglas de text-indent y line-height que ocultaban el contenido */
+.share-whatsapp,
+.share-facebook {
+  /* Las propiedades flexbox de .share-button ya centran el contenido */
+  /* text-indent: -9999px; */ /* REMOVIDO */
+  /* line-height: 0; */ /* REMOVIDO */
 }
 
-.pwa-modal-content p {
-  font-size: 1.05rem;
-  opacity: 0.8;
-  margin-bottom: 2.5rem;
+/* Estilo específico para la imagen dentro del botón de compartir */
+.share-icon-img {
+  width: 100%; /* La imagen llenará el botón */
+  height: 100%;
+  object-fit: contain; /* Asegura que la imagen se escale sin recortarse */
+  padding: 0.2rem; /* Pequeño padding para que la imagen no toque los bordes */
 }
 
-.pwa-modal-buttons {
+/* Ajustar el padding del botón de WhatsApp para la imagen */
+.share-whatsapp {
+  padding: 0; /* Eliminar el padding del enlace, la imagen lo manejará */
+}
+
+/* Asegurar que el ícono de Facebook siga centrado y visible */
+.share-facebook {
+  padding: 0.6rem; /* Mantener el padding para el ícono de Font Awesome */
+}
+
+/* Las reglas antiguas para <i> ya no son necesarias */
+/* .share-whatsapp i, .share-facebook i { text-indent: 0; line-height: initial; } */
+
+/* Estilo para íconos de redes sociales personalizados (imágenes) */
+.social-icon-img {
+  height: 150px; /* Ajusta la altura para que coincida con los otros íconos */
+  width: auto;
+  vertical-align: middle; /* Asegura una buena alineación vertical */
+  transition: opacity 0.3s ease;
+}
+
+/* Ajustes para centrar el footer */
+#main-footer {
+  flex-direction: column; /* Apilar elementos verticalmente */
+  gap: 1rem; /* Espacio entre la información y el ícono */
+  padding: 2rem 1.5rem; /* Ajustar padding */
+}
+
+.footer-info {
+  text-align: center;
+}
+
+/*
+  ======================================================
+  BOTÓN FLOTANTE DE WHATSAPP
+  ======================================================
+*/
+.whatsapp-flotante {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366; /* Color oficial de WhatsApp */
+  border-radius: 50%;
   display: flex;
-  gap: 1rem;
+  align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 998; /* Debajo del reproductor pero encima del resto */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-flotante:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-flotante img {
+  width: 36px; /* Tamaño del ícono dentro del círculo */
+  height: auto;
 }
