@@ -7,11 +7,14 @@
   /* Colores */
   --color-fondo: #ffffff;
   --color-texto: #1d1d1f;
-  --color-acento: #4a90e2; /* Azul más suave, que inspira fe y paz */
+  --color-acento: #4a90e2;
+  /* Azul más suave, que inspira fe y paz */
   --color-acento-dark: #3776c5;
-  --color-gris-claro: #f8f8f9; /* Gris muy sutil para secciones */
+  --color-gris-claro: #f8f8f9;
+  /* Gris muy sutil para secciones */
   --color-gris-medio: #e8e8ed;
-  --color-footer-bg: #1d1d1f; /* Fondo oscuro para el reproductor */
+  --color-footer-bg: #1d1d1f;
+  /* Fondo oscuro para el reproductor */
   --color-footer-text: #ffffff;
 
   /* Tipografía (Uso de fuentes del sistema para un look nativo) */
@@ -23,7 +26,8 @@
 
   /* Espaciado */
   --espaciado-seccion: 8rem 4rem;
-  --altura-footer-player: 65px; /* Altura del reproductor fijo */
+  --altura-footer-player: 65px;
+  /* Altura del reproductor fijo */
 }
 
 /* Base Global */
@@ -73,10 +77,12 @@ a {
 }
 
 .logo {
-  font-size: 1.5rem; /* Ligeramente más grande */
+  font-size: 1.5rem;
+  /* Ligeramente más grande */
   font-weight: var(--fuente-titulo);
   letter-spacing: 0.1em;
-  color: var(--color-acento); /* Logo en color de acento */
+  color: var(--color-acento);
+  /* Logo en color de acento */
 }
 
 .nav-links {
@@ -100,10 +106,12 @@ a {
 /* Estilo para el botón "Escríbenos" en la navegación */
 .cta-nav {
   background-color: var(--color-acento);
-  color: var(--color-fondo) !important; /* Forzar color de texto */
+  color: var(--color-fondo) !important;
+  /* Forzar color de texto */
   padding: 0.5rem 1.2rem;
   border-radius: 9999px;
-  opacity: 1 !important; /* Forzar opacidad */
+  opacity: 1 !important;
+  /* Forzar opacidad */
   transition: background-color 0.3s ease;
 }
 
@@ -118,8 +126,10 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
-  min-height: 300px; /* Espacio mientras cargan los videos */
+  min-height: 300px;
+  /* Espacio mientras cargan los videos */
 }
+
 .predicacion-card {
   background-color: var(--color-gris-claro);
   border-radius: 12px;
@@ -129,15 +139,19 @@ a {
   display: flex;
   flex-direction: column;
 }
+
 .predicacion-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
 .predicacion-media {
   position: relative;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  padding-top: 56.25%;
+  /* 16:9 Aspect Ratio */
   background-color: #000;
 }
+
 .predicacion-media iframe {
   position: absolute;
   top: 0;
@@ -146,14 +160,17 @@ a {
   height: 100%;
   border: 0;
 }
+
 .predicacion-content {
   padding: 1.5rem;
   flex-grow: 1;
 }
+
 .predicacion-content h3 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
 }
+
 .predicacion-content p {
   font-size: 0.95rem;
   opacity: 0.8;
@@ -165,26 +182,33 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
-  min-height: 300px; /* Espacio mientras cargan los videos */
+  min-height: 300px;
+  /* Espacio mientras cargan los videos */
 }
+
 .devocional-card {
   background-color: var(--color-gris-claro);
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--color-gris-medio);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex; /* Para el mensaje de carga */
+  display: flex;
+  /* Para el mensaje de carga */
   flex-direction: column;
 }
+
 .devocional-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
 .devocional-media {
   position: relative;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  padding-top: 56.25%;
+  /* 16:9 Aspect Ratio */
   background-color: #000;
 }
+
 .devocional-media iframe {
   position: absolute;
   top: 0;
@@ -193,14 +217,18 @@ a {
   height: 100%;
   border: 0;
 }
+
 .devocional-content {
   padding: 1.5rem;
-  flex-grow: 1; /* Asegura que el contenido empuje el footer de la tarjeta hacia abajo */
+  flex-grow: 1;
+  /* Asegura que el contenido empuje el footer de la tarjeta hacia abajo */
 }
+
 .devocional-content h3 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
 }
+
 .devocional-content p {
   font-size: 0.95rem;
   opacity: 0.8;
@@ -212,6 +240,7 @@ a {
   margin: 2rem auto 3rem;
   position: relative;
 }
+
 #search-input {
   width: 100%;
   padding: 0.8rem 1rem 0.8rem 2.5rem;
@@ -220,6 +249,7 @@ a {
   border: 1px solid var(--color-gris-medio);
   background-color: var(--color-gris-claro);
 }
+
 .search-container .fa-search {
   position: absolute;
   left: 1rem;
@@ -228,6 +258,7 @@ a {
   color: var(--color-texto);
   opacity: 0.5;
 }
+
 /* Estilos para la Paginación (general, but also used here) */
 .pagination-container {
   display: flex;
@@ -236,6 +267,7 @@ a {
   gap: 0.5rem;
   margin-top: 4rem;
 }
+
 .pagination-btn {
   padding: 0.6rem 1rem;
   border: 1px solid var(--color-gris-medio);
@@ -245,15 +277,18 @@ a {
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }
+
 .pagination-btn:hover {
   background-color: var(--color-gris-claro);
 }
+
 .pagination-btn.active {
   background-color: var(--color-acento);
   color: var(--color-fondo);
   border-color: var(--color-acento);
   font-weight: bold;
 }
+
 .pagination-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -322,6 +357,7 @@ a {
   gap: 2rem;
   margin-top: 3rem;
 }
+
 .book-card {
   display: flex;
   flex-direction: column;
@@ -333,16 +369,20 @@ a {
   transition: all 0.3s ease;
   color: var(--color-texto);
 }
+
 .book-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   border-color: var(--color-acento);
 }
+
 .book-card h3 {
   font-size: 1.3rem;
-  margin-bottom: auto; /* Empuja el botón hacia abajo */
+  margin-bottom: auto;
+  /* Empuja el botón hacia abajo */
   padding-bottom: 1.5rem;
 }
+
 .book-card .cta-primary {
   margin-top: 1rem;
   text-align: center;
@@ -356,9 +396,11 @@ a {
   margin: 3rem auto;
   max-width: 700px;
 }
+
 .summary-list li {
   margin-bottom: 1rem;
 }
+
 .summary-list a {
   display: flex;
   justify-content: space-between;
@@ -372,12 +414,14 @@ a {
   font-size: 1.1rem;
   font-weight: 500;
 }
+
 .summary-list a:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
   border-color: var(--color-acento);
   color: var(--color-acento);
 }
+
 .summary-list a i {
   font-size: 1.2rem;
   color: var(--color-acento);
@@ -395,14 +439,18 @@ a {
 
 .search-container #song-search-form #song-search-input {
   flex-grow: 1;
-  max-width: 300px; /* Limit width on larger screens */
-  margin-bottom: 0; /* Override previous margin */
+  max-width: 300px;
+  /* Limit width on larger screens */
+  margin-bottom: 0;
+  /* Override previous margin */
 }
 
 .search-container #song-search-form .cta-primary {
   flex-shrink: 0;
-  width: auto; /* Default width for button */
-  margin: 0; /* Override previous margin */
+  width: auto;
+  /* Default width for button */
+  margin: 0;
+  /* Override previous margin */
 }
 
 /* ======================================================
@@ -506,9 +554,9 @@ a {
 }
 
 /*
-  ======================================================
-  ACCESOS RÁPIDOS MINIMALISTAS (SIN BOTONES)
-  ======================================================
+  ======================================================
+  ACCESOS RÁPIDOS MINIMALISTAS (SIN BOTONES)
+  ======================================================
 */
 
 .quick-access-label {
@@ -699,19 +747,23 @@ a {
   font-size: 0.9rem;
   opacity: 0.8;
 }
+
 .evento-fecha .dia {
   display: block;
   font-size: 1.8rem;
   line-height: 1;
 }
+
 .evento-info h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
+
 .evento-info p {
   font-size: 0.95rem;
   opacity: 0.7;
 }
+
 .evento-info p i {
   margin-right: 0.5rem;
 }
@@ -719,9 +771,9 @@ a {
 /* ... código CSS de las secciones de servicios/productos (main) ... */
 
 /*
-  ======================================================
-  ESTILOS DE LISTA DE DESCARGA DE LIBROS
-  ======================================================
+  ======================================================
+  ESTILOS DE LISTA DE DESCARGA DE LIBROS
+  ======================================================
 */
 .download-list {
   list-style: none;
@@ -734,6 +786,7 @@ a {
 .download-list li {
   margin-bottom: 1rem;
 }
+
 /* ... y el resto de las reglas para .download-list li a, etc. ... */
 /*
   ======================================================
@@ -830,7 +883,8 @@ a {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--color-acento);
-  box-shadow: 0 0 0 3px rgba(7, 7, 7, 0.2);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+  /* Usa color-acento para el focus box-shadow */
 }
 
 .form-group textarea {
@@ -843,54 +897,61 @@ a {
 }
 
 /* ======================================================
-  🔊 REPRODUCTOR FLOTANTE
-  ======================================================
+  🔊 REPRODUCTOR FLOTANTE
+  ======================================================
 */
 .floating-player {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 999;
-  background-color: rgba(
-    29,
-    29,
-    31,
-    0.85
-  ); /* Opacidad base ligeramente menor */
+  background-color: rgba(29, 29, 31, 0.85);
+  /* Opacidad base ligeramente menor */
   backdrop-filter: blur(15px);
-  padding: 0.8rem 1.5rem; /* Un poco más de padding */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+  padding: 0.8rem 1.5rem;
+  /* Un poco más de padding */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  /* Sombra más sutil */
   display: flex;
   align-items: center;
   gap: 1rem;
-  border-radius: 9999px; /* Forma de píldora */
+  border-radius: 9999px;
+  /* Forma de píldora */
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-  opacity: 0.85; /* Opacidad inicial */
+  opacity: 0.85;
+  /* Opacidad inicial */
 }
 
 .floating-player:hover {
-  opacity: 1; /* Opacidad completa al pasar el mouse */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
-  transform: translateY(-2px); /* Ligera elevación */
+  opacity: 1;
+  /* Opacidad completa al pasar el mouse */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  /* Sombra más pronunciada */
+  transform: translateY(-2px);
+  /* Ligera elevación */
 }
+
 .floating-player .live-tag {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   color: var(--color-footer-text);
-  font-size: 1rem; /* Texto un poco más grande */
+  font-size: 1rem;
+  /* Texto un poco más grande */
   font-weight: var(--fuente-titulo);
   letter-spacing: 0.1em;
   opacity: 0.9;
-  white-space: nowrap; /* Evita que el texto se rompa */
+  white-space: nowrap;
+  /* Evita que el texto se rompa */
 }
 
 /* Animación de pulso para el punto "EN VIVO" */
 .live-tag::before {
   content: "";
   display: block;
-  width: 9px; /* Punto de "en vivo" más grande */
+  width: 9px;
+  /* Punto de "en vivo" más grande */
   height: 9px;
   background-color: #ff4d4d;
   border-radius: 50%;
@@ -901,17 +962,93 @@ a {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7);
   }
+
   70% {
     box-shadow: 0 0 0 10px rgba(255, 77, 77, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(255, 77, 77, 0);
   }
 }
 
 .floating-player audio {
-  width: 300px; /* Ancho fijo y más grande para el reproductor */
-  height: 45px; /* Altura mayor */
+  width: 300px;
+  /* Ancho fijo y más grande para el reproductor */
+  height: 45px;
+  /* Altura mayor */
+}
+
+/*
+  ======================================================
+  BOTÓN FLOTANTE DE INSTALACIÓN PWA (NUEVO ESTILO)
+  ======================================================
+*/
+.install-flotante {
+  position: fixed;
+  top: 7rem;
+  /* Igual que WhatsApp para alinear en desktop */
+  right: 1.5rem;
+  /* Posicionamiento a la derecha en desktop */
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-acento);
+  color: var(--color-fondo);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 998;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.install-flotante i {
+  font-size: 1.8rem;
+}
+
+.install-flotante:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  background-color: var(--color-acento-dark);
+}
+
+/*
+  ======================================================
+  BOTÓN FLOTANTE DE WHATSAPP
+  ======================================================
+*/
+.whatsapp-flotante {
+  position: fixed;
+  top: 7rem;
+  /* Ajustado para no superponerse con el header */
+  left: 1.5rem;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  /* Color oficial de WhatsApp */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 998;
+  /* Debajo del reproductor pero encima del resto */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-flotante:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-flotante img {
+  width: 36px;
+  /* Tamaño del ícono dentro del círculo */
+  height: auto;
 }
 
 /*
@@ -921,14 +1058,16 @@ a {
 */
 /* Hamburger menu icon (hidden by default on desktop) */
 .menu-toggle {
-  display: none; /* Hidden on desktop */
+  display: none;
+  /* Hidden on desktop */
   background: none;
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
   color: var(--color-texto);
   padding: 0.5rem;
-  z-index: 11; /* Ensure it's above other content */
+  z-index: 11;
+  /* Ensure it's above other content */
 }
 
 /* General adjustments for smaller screens */
@@ -940,9 +1079,12 @@ a {
 
   /* Header */
   #main-header {
-    padding: 1rem 1.5rem; /* Reduce header padding */
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: space-between; /* Space between logo and toggle */
+    padding: 1rem 1.5rem;
+    /* Reduce header padding */
+    flex-wrap: wrap;
+    /* Allow items to wrap */
+    justify-content: space-between;
+    /* Space between logo and toggle */
   }
 
   .logo {
@@ -950,26 +1092,26 @@ a {
   }
 
   .nav-links {
-    display: none; /* Hide nav links by default on mobile */
+    display: none;
+    /* Hide nav links by default on mobile */
     flex-direction: column;
     width: 100%;
-    background-color: rgba(
-      214,
-      219,
-      221,
-      0.95
-    ); /* Background for mobile menu */
+    background-color: rgba(214, 219, 221, 0.95);
+    /* Background for mobile menu */
     position: absolute;
-    top: 100%; /* Position below header */
+    top: 100%;
+    /* Position below header */
     left: 0;
     padding: 1rem 1.5rem;
     border-top: 1px solid var(--color-gris-medio);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    z-index: 9; /* Below the header but above main content */
+    z-index: 9;
+    /* Below the header but above main content */
   }
 
   .nav-links.active {
-    display: flex; /* Show when active */
+    display: flex;
+    /* Show when active */
   }
 
   .nav-links li {
@@ -989,16 +1131,19 @@ a {
 
   /* Hamburger menu icon */
   .menu-toggle {
-    display: block; /* Show hamburger icon */
+    display: block;
+    /* Show hamburger icon */
   }
 
   /* Hero Section */
   .hero {
-    padding: 4rem 1.5rem; /* Reduce hero padding */
+    padding: 4rem 1.5rem;
+    /* Reduce hero padding */
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 8vw, 3rem); /* Adjust clamp for smaller screens */
+    font-size: clamp(2rem, 8vw, 3rem);
+    /* Adjust clamp for smaller screens */
     margin-bottom: 1rem;
   }
 
@@ -1013,19 +1158,23 @@ a {
   }
 
   .cta-group {
-    flex-direction: column; /* Stack CTAs vertically */
+    flex-direction: column;
+    /* Stack CTAs vertically */
     gap: 1rem;
   }
 
   .cta-primary,
   .cta-secondary {
-    width: 100%; /* Full width buttons */
-    max-width: 300px; /* Limit max width */
+    width: 100%;
+    /* Full width buttons */
+    max-width: 300px;
+    /* Limit max width */
     margin: 0 auto;
   }
 
   .quick-access-links {
-    flex-direction: column; /* Stack quick access links vertically */
+    flex-direction: column;
+    /* Stack quick access links vertically */
     gap: 0.8rem;
     width: 100%;
     max-width: 300px;
@@ -1033,14 +1182,11 @@ a {
   }
 
   .access-link {
-    justify-content: center; /* Center text in access links */
+    justify-content: center;
+    /* Center text in access links */
     padding: 0.8rem;
-    background-color: rgba(
-      255,
-      255,
-      255,
-      0.05
-    ); /* Slightly visible background */
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Slightly visible background */
     border-radius: 8px;
   }
 
@@ -1049,7 +1195,8 @@ a {
   .servicios,
   .eventos-section,
   .page-content-area {
-    padding: 4rem 1.5rem; /* Reduce section padding */
+    padding: 4rem 1.5rem;
+    /* Reduce section padding */
   }
 
   .productos h2,
@@ -1064,7 +1211,8 @@ a {
   .book-grid,
   .devocional-grid,
   .predicacion-grid {
-    grid-template-columns: 1fr; /* Single column for all grids on mobile */
+    grid-template-columns: 1fr;
+    /* Single column for all grids on mobile */
     gap: 1.5rem;
   }
 
@@ -1093,13 +1241,15 @@ a {
 
   .search-container .fa-search {
     left: 1rem;
-    top: 50%; /* Ensure it's centered vertically */
+    top: 50%;
+    /* Ensure it's centered vertically */
     transform: translateY(-50%);
   }
 
   /* Pagination */
   .pagination-container {
-    flex-wrap: wrap; /* Allow buttons to wrap */
+    flex-wrap: wrap;
+    /* Allow buttons to wrap */
     gap: 0.3rem;
     margin-top: 2.5rem;
   }
@@ -1111,7 +1261,8 @@ a {
 
   /* Modal */
   .modal-content {
-    margin: 10% auto; /* Adjust modal position */
+    margin: 10% auto;
+    /* Adjust modal position */
     padding: 25px;
   }
 
@@ -1137,17 +1288,23 @@ a {
 
   /* Floating Player */
   .floating-player {
-    bottom: 0; /* Stick to the very bottom */
+    bottom: 0;
+    /* Stick to the very bottom */
     right: 0;
-    left: 0; /* Make it full width */
+    left: 0;
+    /* Make it full width */
     width: 100%;
-    border-radius: 0; /* No rounded corners */
-    padding: 0.75rem 1rem; /* Más padding vertical */
-    justify-content: center; /* Center content */
+    border-radius: 0;
+    /* No rounded corners */
+    padding: 0.75rem 1rem;
+    /* Más padding vertical */
+    justify-content: center;
+    /* Center content */
     gap: 0.8rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
-    opacity: 1; /* Siempre opaco en móvil */
+    opacity: 1;
+    /* Siempre opaco en móvil */
   }
 
   .floating-player .live-tag {
@@ -1155,12 +1312,14 @@ a {
   }
 
   .floating-player audio {
-    width: 200px; /* Un poco más grande en móvil */
+    width: 200px;
+    /* Un poco más grande en móvil */
     height: 40px;
   }
 
   .floating-player:hover audio {
-    width: 200px; /* No change on hover for mobile */
+    width: 200px;
+    /* No change on hover for mobile */
   }
 
   /* Footer */
@@ -1179,56 +1338,47 @@ a {
   .footer-info p {
     font-size: 0.9rem;
   }
+
+  /* Ajustes de Posición Flotante en Móvil */
+  /* PWA Install Button: Arriba del reproductor, a la derecha */
+  .install-flotante {
+    top: auto;
+    bottom: calc(var(--altura-footer-player) + 6rem);
+    /* Apilado sobre el botón de WhatsApp */
+    right: 1.5rem;
+    left: auto;
+  }
+
+  /* WhatsApp Button: Arriba del reproductor, a la izquierda */
+  /* CORRECCIÓN: Movido a la derecha para apilar con el botón de instalación */
+  .whatsapp-flotante {
+    right: auto;
+    left: 1.5rem;
+    top: auto;
+    bottom: calc(var(--altura-footer-player) + 1.5rem);
+    /* Arriba del reproductor */
+  }
 }
 
 /* Specific adjustment for very small screens if needed, e.g., < 375px */
 @media (max-width: 374px) {
   .floating-player audio {
-    width: 160px; /* Ajuste para pantallas muy pequeñas */
+    width: 160px;
+    /* Ajuste para pantallas muy pequeñas */
+  }
+
+  /* Ajustar la posición de los botones flotantes en pantallas muy pequeñas para que no se superpongan */
+  .install-flotante,
+  .whatsapp-flotante {
+    width: 50px;
+    height: 50px;
+    bottom: calc(var(--altura-footer-player) + 1rem);
+    /* Un poco más cerca del borde */
   }
 }
 
-/* Desktop specific styles (undo mobile changes where necessary) */
-/*
-  ======================================================
-  RESPONSIVE 
-  ======================================================
-*/
-@media (min-width: 768px) {
-  /* En pantallas grandes, el comportamiento de hover ya es ideal */
-}
-@media (min-width: 768px) {
-  .menu-toggle {
-    display: none; /* Hide hamburger on desktop */
-  }
-  .nav-links {
-    display: flex; /* Show nav links on desktop */
-    position: static;
-    background-color: transparent;
-    border-top: none;
-    box-shadow: none;
-    padding: 0;
-  }
-  .cta-nav {
-    display: inline-block; /* Show cta-nav on desktop */
-  }
-
-  /* For cancionero.html specific search button on desktop */
-  .search-container #song-search-form #song-search-input {
-    max-width: 300px; /* Limit width on larger screens */
-  }
-  .search-container #song-search-form .cta-primary {
-    width: auto; /* Auto width for button */
-    margin-left: 1rem; /* Space between input and button */
-  }
-  .search-container .fa-search {
-    position: absolute; /* Restore absolute positioning */
-    transform: translateY(-50%);
-    left: 1rem;
-    top: 50%;
-    display: block; /* Ensure it's visible */
-  }
-}
+/* NOTA: La media query para min-width: 768px fue eliminada por ser redundante. */
+/* Los estilos de escritorio son los estilos base y se aplican automáticamente en pantallas grandes. */
 
 /*
   ======================================================
@@ -1236,7 +1386,8 @@ a {
   ======================================================
 */
 .pwa-modal {
-  display: none; /* Oculto por defecto */
+  display: none;
+  /* Oculto por defecto */
   position: fixed;
   z-index: 2000;
   left: 0;
@@ -1246,7 +1397,8 @@ a {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
-  align-items: center; /* Centrado vertical */
+  align-items: center;
+  /* Centrado vertical */
   justify-content: center;
 }
 
@@ -1266,106 +1418,33 @@ a {
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-/* Estilo para íconos de redes sociales personalizados (imágenes) */
-.social-icon-img {
-  height: 24px; /* Ajusta la altura para que coincida con los otros íconos */
-  height: 36px; /* Aumentar el tamaño del ícono */
-  width: auto;
-  vertical-align: middle; /* Asegura una buena alineación vertical */
-  transition: opacity 0.3s ease;
-}
-
 /* --- Estilos para Botones de Compartir --- */
-/* Eliminar las reglas de text-indent y line-height que ocultaban el contenido */
-.share-whatsapp,
-.share-facebook {
-  /* Las propiedades flexbox de .share-button ya centran el contenido */
-  /* text-indent: -9999px; */ /* REMOVIDO */
-  /* line-height: 0; */ /* REMOVIDO */
-}
-
-/* Estilo específico para la imagen dentro del botón de compartir */
-.share-icon-img {
-  width: 100%; /* La imagen llenará el botón */
-  height: 100%;
-  object-fit: contain; /* Asegura que la imagen se escale sin recortarse */
-  padding: 0.2rem; /* Pequeño padding para que la imagen no toque los bordes */
-}
-
-/* Ajustar el padding del botón de WhatsApp para la imagen */
-.share-whatsapp {
-  padding: 0; /* Eliminar el padding del enlace, la imagen lo manejará */
-}
-
-/* Asegurar que el ícono de Facebook siga centrado y visible */
-.share-facebook {
-  padding: 0.6rem; /* Mantener el padding para el ícono de Font Awesome */
-}
-
-/* Las reglas antiguas para <i> ya no son necesarias */
-/* .share-whatsapp i, .share-facebook i { text-indent: 0; line-height: initial; } */
-
 /* Estilo para íconos de redes sociales personalizados (imágenes) */
 .social-icon-img {
-  height: 150px; /* Ajusta la altura para que coincida con los otros íconos */
+  height: 36px;
+  /* Aumentar el tamaño del ícono */
   width: auto;
-  vertical-align: middle; /* Asegura una buena alineación vertical */
+  vertical-align: middle;
+  /* Asegura una buena alineación vertical */
   transition: opacity 0.3s ease;
 }
 
-/* Ajustes para centrar el footer */
 #main-footer {
-  flex-direction: column; /* Apilar elementos verticalmente */
-  gap: 1rem; /* Espacio entre la información y el ícono */
-  padding: 2rem 1.5rem; /* Ajustar padding */
+  flex-direction: column;
+  /* Apilar elementos verticalmente */
+  gap: 1rem;
+  /* Espacio entre la información y el ícono */
+  padding: 2rem 1.5rem;
+  /* Ajustar padding */
 }
 
 .footer-info {
   text-align: center;
-}
-
-/*
-  ======================================================
-  BOTÓN FLOTANTE DE WHATSAPP
-  ======================================================
-*/
-.whatsapp-flotante {
-  position: fixed;
-  top: 7rem; /* Ajustado para no superponerse con el header */
-  left: 1.5rem;
-  width: 60px;
-  height: 60px;
-  background-color: #25d366; /* Color oficial de WhatsApp */
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 998; /* Debajo del reproductor pero encima del resto */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.whatsapp-flotante:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-}
-
-.whatsapp-flotante img {
-  width: 36px; /* Tamaño del ícono dentro del círculo */
-  height: auto;
-}
-
-/* En móvil, subimos el botón de WhatsApp para que no lo tape el reproductor */
-@media (max-width: 767px) {
-  .whatsapp-flotante {
-    bottom: calc(
-      var(--altura-footer-player) + 1rem
-    ); /* 65px + 16px = 81px desde abajo */
-  }
 }
