@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cancionero | Gracia y Paz Radio</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- Meta para el color de la barra de estado en iOS -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4a90e2" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="main-header">
+      <div class="logo">GRACIA Y PAZ RADIO</div>
+      <nav aria-label="Navegación principal del sitio">
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="libros.html">Libros Cristianos</a></li>
+          <li><a href="resumidos.html">Resumidos</a></li>
+          <li><a href="cancionero.html">Cancionero</a></li>
+          <li><a href="predicaciones.html">Predicaciones</a></li>
+          <li><a href="devocional-dia.html">Devocional del día</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section
+        class="page-content-area"
+        role="main"
+        aria-label="Cancionero Cristiano"
+      >
+        <h1 style="text-align: center">
+          <i class="fas fa-music"></i> Cancionero Cristiano
+        </h1>
+        <p
+          style="
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+          "
+        >
+          Busca letras y acordes de tus canciones favoritas directamente en
+          LaCuerda.net, el mayor archivo de música cristiana.
+        </p>
+
+        <div class="search-container">
+          <form id="song-search-form">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              id="song-search-input"
+              placeholder="Buscar canción o artista..."
+            />
+            <button type="submit" class="cta-primary">
+              <i class="fas fa-guitar"></i> Buscar en LaCuerda.net
+            </button>
+          </form>
+        </div>
+        <div style="text-align: center; margin-top: 2rem">
+          <a href="index.html" class="cta-primary">Volver a Página Principal</a>
+        </div>
+      </section>
+    </main>
+
+    <hr />
+
+    <footer id="main-footer">
+      <div class="footer-info">
+        <p>
+          📍 Emisora Central | ✉️
+          <a href="mailto:RadioGraciayPaz.Online@gmail.com"
+            >contacto@RadioGraciayPaz.com</a
+          >
+        </p>
+        <p>
+          © <time datetime="2025">2025</time> Gracia y Paz Radio — Todos los
+          derechos reservados.
+        </p>
+      </div>
+      <nav class="footer-social" aria-label="Redes Sociales">
+        <p>Síguenos:</p>
+        <ul class="social-links">
+          <li>
+            <a href="URL_INSTAGRAM" target="_blank" rel="noopener noreferrer"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </li>
+          <li>
+            <a href="URL_FACEBOOK" target="_blank" rel="noopener noreferrer"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+          </li>
+          <li>
+            <a href="URL_YOUTUBE" target="_blank" rel="noopener noreferrer"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+
+    <div class="floating-player" aria-label="Reproductor de Radio Flotante">
+      <p class="live-tag"><i class="fas fa-signal"></i> EN VIVO</p>
+      <audio id="radio-audio" controls autoplay>
+        <source src="https://stream.zeno.fm/mfer4shs398uv" type="audio/aac" />
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- Script para registrar el Service Worker (PWA) ---
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", () => {
+            navigator.serviceWorker
+              .register("/sw.js")
+              .then((reg) => console.log("Service worker registrado", reg))
+              .catch((err) =>
+                console.log("Error al registrar service worker", err)
+              );
+          });
+        }
+        // --- Script para el Autoplay del reproductor ---
+        const radioPlayer = document.getElementById("radio-audio");
+        if (radioPlayer) {
+          radioPlayer.play().catch(() => {
+            // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
+          });
+        }
+
+        // --- Script para la búsqueda en LaCuerda.net ---
+        const searchForm = document.getElementById("song-search-form");
+        const songSearchInput = document.getElementById("song-search-input");
+
+        if (searchForm && songSearchInput) {
+          searchForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Evita que el formulario se envíe de la forma tradicional
+            const query = songSearchInput.value.trim();
+            if (query) {
+              // Codifica la búsqueda para que sea segura en una URL
+              const encodedQuery = encodeURIComponent(query);
+              const searchUrl = `https://acordes.lacuerda.net/busca.php?q=${encodedQuery}&exp=cristiana`; // Corrected search URL
+              window.open(searchUrl, "_blank"); // Abre la búsqueda en una nueva pestaña
+            } else {
+              // If no query, open the generic Christian music page
+              window.open(
+                "https://acordes.lacuerda.net/musica_cristiana/",
+                "_blank"
+              );
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
