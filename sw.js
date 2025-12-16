@@ -1,21 +1,21 @@
 const CACHE_NAME = "gyp-radio-cache-v2"; // **Incrementamos la versión del caché**
 const urlsToCache = [
-  "/",
-  "/index.html",
-  "/style.css",
-  "/main.js",
-  "/youtube-loader.js",
-  "/manifest.json",
-  "/libros.html",
-  "/resumidos.html",
-  "/predicaciones.html",
-  "/devocional-dia.html",
-  "/cancionero.html",
-  "/playlist-view.html",
-  "/icons/icon-192x192.png",
-  "/icons/icon-512x512.png", // Fuente externa: la cachearemos, pero luego aplicaremos una estrategia de actualización.
-  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css", // Asumiendo que esta es la imagen del fondo del hero
-  "/fondo.png",
+  "./",
+  "./index.html",
+  "./style.css",
+  "./main.js",
+  "./youtube-loader.js",
+  "./manifest.json",
+  "./libros.html",
+  "./resumidos.html",
+  "./predicaciones.html",
+  "./devocional-dia.html",
+  "./cancionero.html",
+  "./playlist-view.html",
+  "./icons/icon-192x192.png",
+  "./icons/icon-512x512.png",
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+  "./fondo.png",
 ];
 
 // 1. EVENTO INSTALL: Pre-cacheo de recursos esenciales.

@@ -1,292 +1,432 @@
 /*
   ======================================================
-  VARIABLES CSS: Estilo Apple (Minimalista, Alto Contraste)
+  GYP.IO - PREMIUM DESIGN SYSTEM (2025 REFRESH)
   ======================================================
 */
-:root {
-  /* Colores */
-  --color-fondo: #ffffff;
-  --color-texto: #1d1d1f;
-  --color-acento: #4a90e2;
-  /* Azul más suave, que inspira fe y paz */
-  --color-acento-dark: #3776c5;
-  --color-gris-claro: #f8f8f9;
-  /* Gris muy sutil para secciones */
-  --color-gris-medio: #e8e8ed;
-  --color-footer-bg: #1d1d1f;
-  /* Fondo oscuro para el reproductor */
-  --color-footer-text: #ffffff;
 
-  /* Tipografía (Uso de fuentes del sistema para un look nativo) */
-  --fuente-sistema: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --fuente-titulo: 700;
-  --fuente-cuerpo: 400;
-  --fuente-subtitulo: 500;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Paleta de Colores Premium */
+  --bg-dark: #0f172a;
+  --bg-card: #1e293b;
+  --bg-card-hover: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-primary: #3b82f6; /* Vivid Blue */
+  --accent-glow: rgba(59, 130, 246, 0.5);
+  --accent-secondary: #8b5cf6; /* Violet */
+  --success: #10b981;
+  --glass-bg: rgba(15, 23, 42, 0.85);
 
   /* Espaciado */
-  --espaciado-seccion: 8rem 4rem;
-  --altura-footer-player: 65px;
-  /* Altura del reproductor fijo */
+  --container-width: 1280px;
+  --header-height: 80px;
+  --player-height: 80px;
+
+  /* Efectos */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-accent: 0 0 20px var(--accent-glow);
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 }
 
-/* Base Global */
+/* Base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: var(--fuente-sistema);
-  color: var(--color-texto);
-  background-color: var(--color-fondo);
-  line-height: 1.5;
-  min-height: 100vh;
-  /* Espacio al final para que el contenido no quede oculto detrás del reproductor fijo */
-  padding-bottom: var(--altura-footer-player);
+html {
+  scroll-behavior: smooth;
 }
 
-h1,
-h2,
-h3 {
-  font-weight: var(--fuente-titulo);
-  letter-spacing: -0.02em;
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-bottom: calc(var(--player-height) + 2rem);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tipografía */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 a {
   text-decoration: none;
-  transition: color 0.3s ease, opacity 0.3s ease;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+/* Layout Utilidades */
+.container {
+  width: 90%;
+  max-width: var(--container-width);
+  margin: 0 auto;
 }
 
 /* ======================================================
-  HEADER (Barra de Navegación Estilo Transparente/Blur)
-  ======================================================
-*/
+  HEADER & NAVIGATION
+====================================================== */
 #main-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 3rem;
+  height: var(--header-height);
   position: sticky;
   top: 0;
-  z-index: 10;
-  background-color: rgba(214, 219, 221, 0.9);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-gris-medio);
+  z-index: 50;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
 }
 
 .logo {
   font-size: 1.5rem;
-  /* Ligeramente más grande */
-  font-weight: var(--fuente-titulo);
-  letter-spacing: 0.1em;
-  color: var(--color-acento);
-  /* Logo en color de acento */
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
 }
 
 .nav-links {
-  list-style: none;
   display: flex;
-  gap: 2.5rem;
+  gap: 2rem;
+  list-style: none;
 }
 
 .nav-links a {
+  font-weight: 500;
+  color: var(--text-secondary);
   font-size: 0.95rem;
-  font-weight: var(--fuente-subtitulo);
-  color: var(--color-texto);
-  opacity: 0.8;
+  position: relative;
 }
 
-.nav-links a:hover {
-  color: var(--color-acento);
-  opacity: 1;
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-primary);
 }
 
-/* Estilo para el botón "Escríbenos" en la navegación */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-primary);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
 .cta-nav {
-  background-color: var(--color-acento);
-  color: var(--color-fondo) !important;
-  /* Forzar color de texto */
-  padding: 0.5rem 1.2rem;
-  border-radius: 9999px;
-  opacity: 1 !important;
-  /* Forzar opacidad */
-  transition: background-color 0.3s ease;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  padding: 0.6rem 1.5rem;
+  border-radius: 99px;
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: var(--shadow-accent);
 }
 
 .cta-nav:hover {
-  background-color: var(--color-acento-dark);
-  color: var(--color-fondo) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px var(--accent-glow);
 }
 
-/* Estilos específicos para la página de predicaciones */
-.predicacion-grid {
+.cta-nav::after { display: none !important; }
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ======================================================
+  HERO SECTION
+====================================================== */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 1rem;
+  background: 
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.4), var(--bg-dark)),
+    url("fondo.png") no-repeat center center/cover;
+}
+
+.hero hgroup {
+  max-width: 900px;
+  z-index: 2;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -2px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero .slogan {
+  font-size: 1.2rem;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero .descripcion {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  z-index: 2;
+}
+
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  z-index: 2;
+  width: 100%;
+}
+
+.quick-access-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.access-link {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius-lg);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.access-link i { color: var(--accent-primary); }
+
+.access-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  border-color: var(--accent-primary);
+}
+
+.cta-secondary {
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--text-primary);
+  padding-bottom: 2px;
+  font-weight: 500;
+}
+
+/* ======================================================
+  SECTIONS & CARDS
+====================================================== */
+section {
+  padding: 5rem 5%;
+}
+
+.productos h2, .servicios h2, .eventos-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--text-primary);
+}
+
+.productos-grid, .playlist-grid, .book-grid, .predicacion-grid, .devocional-grid, .eventos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-top: 3rem;
-  min-height: 300px;
-  /* Espacio mientras cargan los videos */
+  max-width: var(--container-width);
+  margin: 0 auto;
 }
 
-.predicacion-card {
-  background-color: var(--color-gris-claro);
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--color-gris-medio);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Card General Style */
+.producto, .playlist-card, .book-card, .predicacion-card, .devocional-card, .evento-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
-.predicacion-card:hover {
+.producto:hover, .playlist-card:hover, .book-card:hover, .predicacion-card:hover, .devocional-card:hover, .evento-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-primary);
 }
 
-.predicacion-media {
+.icon-product {
+  font-size: 2rem;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+.producto h3, .playlist-card h3, .book-card h3, .predicacion-content h3, .devocional-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.producto p, .playlist-card p, .book-card p, .predicacion-content p, .devocional-content p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Specific Card Styles */
+.predicacion-card, .devocional-card, .playlist-card {
+  padding: 0; /* Reset padding for cards with media */
+  overflow: hidden;
+}
+
+.predicacion-media, .devocional-media, .playlist-card-thumbnail {
   position: relative;
-  padding-top: 56.25%;
-  /* 16:9 Aspect Ratio */
-  background-color: #000;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  background: #000;
 }
 
-.predicacion-media iframe {
+.predicacion-media iframe, .devocional-media iframe, .playlist-card-thumbnail img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  border: 0;
+  object-fit: cover;
+  border: none;
 }
 
-.predicacion-content {
+.predicacion-content, .devocional-content, .playlist-card-content {
   padding: 1.5rem;
-  flex-grow: 1;
 }
 
-.predicacion-content h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-}
-
-.predicacion-content p {
-  font-size: 0.95rem;
-  opacity: 0.8;
-}
-
-/* Estilos específicos para la página de devocionales (similar to predicaciones) */
-.devocional-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-  min-height: 300px;
-  /* Espacio mientras cargan los videos */
-}
-
-.devocional-card {
-  background-color: var(--color-gris-claro);
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--color-gris-medio);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  /* Para el mensaje de carga */
-  flex-direction: column;
-}
-
-.devocional-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.devocional-media {
-  position: relative;
-  padding-top: 56.25%;
-  /* 16:9 Aspect Ratio */
-  background-color: #000;
-}
-
-.devocional-media iframe {
+.playlist-card-thumbnail .video-count {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
+  bottom: 0.8rem;
+  right: 0.8rem;
+  background: rgba(0,0,0,0.8);
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: white;
 }
 
-.devocional-content {
-  padding: 1.5rem;
-  flex-grow: 1;
-  /* Asegura que el contenido empuje el footer de la tarjeta hacia abajo */
+/* Eventos */
+.evento-card {
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.devocional-content h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
+.evento-fecha {
+  background: var(--accent-primary);
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 80px;
 }
 
-.devocional-content p {
-  font-size: 0.95rem;
-  opacity: 0.8;
-}
+.evento-fecha .dia { font-size: 1.8rem; font-weight: 700; display: block; }
+.evento-fecha .mes { font-size: 0.9rem; text-transform: uppercase; }
 
-/* Estilos para el campo de búsqueda (general, but also used here) */
+/* ======================================================
+  COMPONENTS
+====================================================== */
+
+/* Search */
 .search-container {
   max-width: 600px;
-  margin: 2rem auto 3rem;
+  margin: 2rem auto;
   position: relative;
 }
 
-#search-input {
+#search-input, #song-search-input {
   width: 100%;
-  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1rem 1rem 3rem;
+  border-radius: 99px;
+  color: var(--text-primary);
   font-size: 1rem;
-  border-radius: 9999px;
-  border: 1px solid var(--color-gris-medio);
-  background-color: var(--color-gris-claro);
+  transition: all 0.3s ease;
+}
+
+#search-input:focus, #song-search-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
 .search-container .fa-search {
   position: absolute;
-  left: 1rem;
+  left: 1.2rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--color-texto);
-  opacity: 0.5;
+  color: var(--text-secondary);
 }
 
-/* Estilos para la Paginación (general, but also used here) */
+/* Pagination */
 .pagination-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 0.5rem;
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .pagination-btn {
-  padding: 0.6rem 1rem;
-  border: 1px solid var(--color-gris-medio);
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: all 0.2s;
 }
 
 .pagination-btn:hover {
-  background-color: var(--color-gris-claro);
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
 }
 
 .pagination-btn.active {
-  background-color: var(--color-acento);
-  color: var(--color-fondo);
-  border-color: var(--color-acento);
-  font-weight: bold;
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
 }
 
 .pagination-btn:disabled {
@@ -294,505 +434,57 @@ a {
   cursor: not-allowed;
 }
 
-/* Estilos para la cuadrícula de PLAYLISTS */
-.playlist-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.playlist-card {
-  display: block;
-  background-color: var(--color-gris-claro);
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--color-gris-medio);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: var(--color-texto);
-  text-decoration: none;
-}
-
-.playlist-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.playlist-card-thumbnail {
-  position: relative;
-}
-
-.playlist-card-thumbnail img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
-}
-
-.playlist-card-thumbnail .video-count {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 0.2rem 0.6rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.playlist-card-content {
-  padding: 1.5rem;
-}
-
-.playlist-card-content h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Estilos para la cuadrícula de libros, similar a .productos-grid */
-.book-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.book-card {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  background-color: var(--color-gris-claro);
-  border-radius: 12px;
-  text-align: left;
-  border: 1px solid var(--color-gris-medio);
-  transition: all 0.3s ease;
-  color: var(--color-texto);
-}
-
-.book-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  border-color: var(--color-acento);
-}
-
-.book-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: auto;
-  /* Empuja el botón hacia abajo */
-  padding-bottom: 1.5rem;
-}
-
-.book-card .cta-primary {
-  margin-top: 1rem;
-  text-align: center;
-  width: 100%;
-}
-
-/* Estilos para la lista de resúmenes, similar a otras listas del sitio */
-.summary-list {
+/* Lists (Summary/Download) */
+.summary-list, .download-list {
   list-style: none;
-  padding: 0;
-  margin: 3rem auto;
-  max-width: 700px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.summary-list li {
+.summary-list li, .download-list li {
   margin-bottom: 1rem;
 }
 
-.summary-list a {
+.summary-list a, .download-list a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 1.5rem;
-  background-color: var(--color-gris-claro);
-  color: var(--color-texto);
-  border-radius: 10px;
-  border: 1px solid var(--color-gris-medio);
-  transition: all 0.3s ease;
-  font-size: 1.1rem;
-  font-weight: 500;
+  padding: 1.2rem;
+  background: var(--bg-card);
+  border-radius: 12px;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.summary-list a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
-  border-color: var(--color-acento);
-  color: var(--color-acento);
+.summary-list a:hover, .download-list a:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent-primary);
+  transform: translateX(5px);
 }
 
-.summary-list a i {
-  font-size: 1.2rem;
-  color: var(--color-acento);
-  opacity: 0.8;
-}
+.summary-list i { color: var(--accent-primary); }
 
-/* Estilos para el campo de búsqueda en cancionero.html */
-.search-container #song-search-form {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.search-container #song-search-form #song-search-input {
-  flex-grow: 1;
-  max-width: 300px;
-  /* Limit width on larger screens */
-  margin-bottom: 0;
-  /* Override previous margin */
-}
-
-.search-container #song-search-form .cta-primary {
-  flex-shrink: 0;
-  width: auto;
-  /* Default width for button */
-  margin: 0;
-  /* Override previous margin */
-}
-
-/* ======================================================
-  HERO (Sección de Alto Impacto con Fondo de Imagen)
-  ======================================================
-*/
-.hero {
-  text-align: center;
-  padding: var(--espaciado-seccion);
-  position: relative;
-  overflow: hidden;
-  color: #9e9797;
-  /* CONFIGURACIÓN DE IMAGEN DE FONDO */
-  background: url("fondo.png") no-repeat center center/cover;
-}
-
-/* Capa de Oscurecimiento sobre la imagen para mejorar la legibilidad del texto */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Superposición de negro semi-transparente */
-  background: rgba(49, 47, 47, 0.55);
-  z-index: 1;
-}
-
-/* Asegura que el contenido esté sobre la capa de oscurecimiento */
-.hero hgroup,
-.hero p,
-.cta-group {
-  position: relative;
-  z-index: 2;
-}
-
-.hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  line-height: 1.05;
-  max-width: 900px;
-  margin: 0 auto 1.5rem;
-}
-
-.hero .slogan {
-  font-size: clamp(1.2rem, 2vw, 1.8rem);
-  font-weight: var(--fuente-subtitulo);
-  min-height: (2.5rem);
-  color: var(--color-acento);
-  margin-bottom: 3rem;
-}
-
-.hero .descripcion {
-  font-size: 1.15rem;
-  line-height: 1.65;
-  max-width: 950px;
-  margin: 0 auto 3rem;
-  color: var(--color-fondo);
-}
-
-/* Botones (CTA) */
-.cta-group {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-}
-
-.cta-primary,
-.cta-secondary {
-  display: inline-block;
-  padding: 0.9rem 2.2rem;
-  border-radius: 9999px;
-  font-weight: var(--fuente-subtitulo);
-  font-size: 1rem;
-  text-align: center;
-  white-space: nowrap;
-  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
+/* Buttons */
 .cta-primary {
-  background-color: var(--color-acento);
-  color: var(--color-fondo);
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 99px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-accent);
 }
 
 .cta-primary:hover {
-  background-color: var(--color-acento-dark);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
 }
 
-.cta-secondary {
-  background-color: transparent;
-  color: var(--color-fondo);
-  border: 1px solid var(--color-fondo);
-  position: center;
-}
-
-.cta-secondary:hover {
-  background-color: var(--color-fondo);
-  color: var(--color-acento);
-}
-
-/*
-  ======================================================
-  ACCESOS RÁPIDOS MINIMALISTAS (SIN BOTONES)
-  ======================================================
-*/
-
-.quick-access-label {
-  font-size: 0.9rem;
-  color: var(--color-gris-medio);
-  opacity: 0.8;
-  margin-bottom: 0.5rem;
-  font-weight: var(--fuente-subtitulo);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.quick-access-links {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.access-link {
-  display: flex;
-  align-items: center;
-  font-size: 1.05rem;
-  font-weight: var(--fuente-subtitulo);
-  color: var(--color-fondo);
-  padding: 0.5rem;
-  border-radius: 6px;
-  opacity: 0.7;
-  transition: opacity 0.3s ease, color 0.3s ease;
-}
-
-.access-link i {
-  margin-right: 0.5rem;
-  color: var(--color-acento);
-}
-
-.access-link:hover {
-  opacity: 1;
-  color: var(--color-acento);
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/*
-  ======================================================
-  SECCIONES DE CONTENIDO (Programas y Estudios)
-  ======================================================
-*/
-.productos,
-.servicios {
-  padding: 6rem 4rem;
-  text-align: center;
-  border-top: 1px solid var(--color-gris-medio);
-}
-
-.productos h2,
-.servicios h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 4rem;
-  color: var(--color-texto);
-}
-
-.productos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3rem;
-}
-
-.producto {
-  padding: 2rem;
-  background-color: var(--color-gris-claro);
-  border-radius: 12px;
-  text-align: left;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-}
-
-/* Estilos para el ícono dentro de la tarjeta */
-.icon-product {
-  margin-right: 0.75rem;
-  color: var(--color-acento);
-  font-size: 1.5rem;
-  vertical-align: middle;
-}
-
-.producto h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.8rem;
-  color: var(--color-texto);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.producto p {
-  line-height: 1.6;
-  color: var(--color-texto);
-  opacity: 0.8;
-}
-
-.producto:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  border-color: var(--color-acento);
-}
-
-/* Asegurar que el texto dentro de la tarjeta-enlace no cambie de color */
-.producto,
-.producto:visited {
-  color: var(--color-texto);
-}
-
-/* SECCION SERVICIOS (Estudios Bíblicos) */
-.servicios {
-  background-color: var(--color-fondo);
-}
-
-.servicios-content {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.servicios p {
-  font-size: 1.15rem;
-  line-height: 1.65;
-  margin: 1.5rem auto 3rem;
-  color: var(--color-texto);
-}
-
-/*
-  ======================================================
-  SECCIÓN DE PRÓXIMOS EVENTOS
-  ======================================================
-*/
-.eventos-section {
-  padding: 6rem 4rem;
-  background-color: var(--color-gris-claro);
-  text-align: center;
-}
-
-.eventos-section h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 4rem;
-  color: var(--color-texto);
-}
-
-.eventos-section h2 i {
-  margin-right: 1rem;
-  color: var(--color-acento);
-}
-
-.eventos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.evento-card {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  background-color: var(--color-fondo);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--color-gris-medio);
-  text-align: left;
-  transition: all 0.3s ease;
-}
-
-.evento-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.evento-fecha {
-  background-color: var(--color-acento);
-  color: var(--color-fondo);
-  border-radius: 8px;
-  padding: 0.8rem;
-  text-align: center;
-  font-weight: var(--fuente-titulo);
-}
-
-.evento-fecha .mes {
-  display: block;
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-.evento-fecha .dia {
-  display: block;
-  font-size: 1.8rem;
-  line-height: 1;
-}
-
-.evento-info h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.evento-info p {
-  font-size: 0.95rem;
-  opacity: 0.7;
-}
-
-.evento-info p i {
-  margin-right: 0.5rem;
-}
-
-/* ... código CSS de las secciones de servicios/productos (main) ... */
-
-/*
-  ======================================================
-  ESTILOS DE LISTA DE DESCARGA DE LIBROS
-  ======================================================
-*/
-.download-list {
-  list-style: none;
-  padding: 0;
-  margin: 3rem auto;
-  max-width: 700px;
-  position: column;
-}
-
-.download-list li {
-  margin-bottom: 1rem;
-}
-
-/* ... y el resto de las reglas para .download-list li a, etc. ... */
-/*
-  ======================================================
-  MODAL Y FORMULARIO (Petición de Oración)
-  ======================================================
-*/
+/* ======================================================
+  MODAL & FORMS
+====================================================== */
 .modal {
   display: none;
   position: fixed;
@@ -801,650 +493,195 @@ a {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background: rgba(0,0,0,0.8);
   backdrop-filter: blur(5px);
 }
 
 .modal-content {
-  background-color: var(--color-fondo);
-  margin: 3% auto;
-  padding: 40px;
-  border-radius: 15px;
-  width: 95%;
-  max-width: 600px;
+  background: var(--bg-card);
+  margin: 5% auto;
+  padding: 2.5rem;
+  border-radius: var(--radius-xl);
+  width: 90%;
+  max-width: 500px;
   position: relative;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .cerrar {
-  color: var(--color-texto);
   position: absolute;
-  top: 15px;
-  right: 25px;
-  font-size: 36px;
-  font-weight: var(--fuente-cuerpo);
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-.cerrar:hover {
-  opacity: 1;
-}
-
-/* Estilos del Formulario */
-.modal-title {
+  top: 1rem;
+  right: 1.5rem;
+  color: var(--text-secondary);
   font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: var(--color-texto);
+  cursor: pointer;
 }
 
-.modal-subtitle {
-  font-size: 1.1rem;
-  color: var(--color-texto);
-  opacity: 0.7;
-  margin-bottom: 2rem;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-size: 0.9rem;
-  font-weight: var(--fuente-subtitulo);
-  margin-bottom: 0.5rem;
-  color: var(--color-texto);
-  opacity: 0.8;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 0.8rem 1rem;
-  border: 1px solid var(--color-gris-medio);
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.8rem;
   border-radius: 8px;
-  font-family: var(--fuente-sistema);
-  font-size: 1rem;
-  color: var(--color-texto);
-  background-color: var(--color-gris-claro);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-family: inherit;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--color-acento);
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
-  /* Usa color-acento para el focus box-shadow */
-}
-
-.form-group textarea {
-  resize: vertical;
-}
-
-.form-submit-btn {
-  margin-top: 1.5rem;
-  align-self: flex-start;
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
 /* ======================================================
-  🔊 REPRODUCTOR FLOTANTE
-  ======================================================
-*/
+  FLOATING PLAYER & ACTIONS
+====================================================== */
 .floating-player {
   position: fixed;
   bottom: 1.5rem;
-  right: 1.5rem;
-  z-index: 999;
-  background-color: rgba(29, 29, 31, 0.85);
-  /* Opacidad base ligeramente menor */
+  right: 1.5rem; /* By default right */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px; /* Centered pill on desktop too for modern look */
+  background: rgba(15, 23, 42, 0.9);
   backdrop-filter: blur(15px);
   padding: 0.8rem 1.5rem;
-  /* Un poco más de padding */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  /* Sombra más sutil */
+  border-radius: 99px;
+  border: 1px solid rgba(255,255,255,0.1);
   display: flex;
   align-items: center;
-  gap: 1rem;
-  border-radius: 9999px;
-  /* Forma de píldora */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-  opacity: 0.85;
-  /* Opacidad inicial */
+  justify-content: space-between;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  z-index: 100;
 }
 
-.floating-player:hover {
-  opacity: 1;
-  /* Opacidad completa al pasar el mouse */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  /* Sombra más pronunciada */
-  transform: translateY(-2px);
-  /* Ligera elevación */
-}
-
-.floating-player .live-tag {
+.live-tag {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--color-footer-text);
-  font-size: 1rem;
-  /* Texto un poco más grande */
-  font-weight: var(--fuente-titulo);
-  letter-spacing: 0.1em;
-  opacity: 0.9;
-  white-space: nowrap;
-  /* Evita que el texto se rompa */
+  color: #ef4444; /* Red for live */
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
 }
 
-/* Animación de pulso para el punto "EN VIVO" */
 .live-tag::before {
-  content: "";
-  display: block;
-  width: 9px;
-  /* Punto de "en vivo" más grande */
-  height: 9px;
-  background-color: #ff4d4d;
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #ef4444;
   border-radius: 50%;
-  animation: pulse 2s infinite;
+  animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7);
-  }
-
-  70% {
-    box-shadow: 0 0 0 10px rgba(255, 77, 77, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 77, 77, 0);
-  }
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
 }
 
 .floating-player audio {
-  width: 300px;
-  /* Ancho fijo y más grande para el reproductor */
-  height: 45px;
-  /* Altura mayor */
+  height: 35px;
+  filter: invert(1) hue-rotate(180deg); /* Dark mode audio player tweak */
+  opacity: 0.8;
 }
 
-/*
-  ======================================================
-  BOTÓN FLOTANTE DE INSTALACIÓN PWA (NUEVO ESTILO)
-  ======================================================
-*/
-.install-flotante {
+/* Floating Buttons */
+.whatsapp-flotante, .install-flotante {
   position: fixed;
-  top: 7rem;
-  /* Igual que WhatsApp para alinear en desktop */
-  right: 1.5rem;
-  /* Posicionamiento a la derecha en desktop */
-  width: 60px;
-  height: 60px;
-  background-color: var(--color-acento);
-  color: var(--color-fondo);
-  border: none;
+  bottom: 6rem;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 998;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-    background-color 0.3s ease;
+  z-index: 90;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-.install-flotante i {
-  font-size: 1.8rem;
-}
-
-.install-flotante:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-  background-color: var(--color-acento-dark);
-}
-
-/*
-  ======================================================
-  BOTÓN FLOTANTE DE WHATSAPP
-  ======================================================
-*/
 .whatsapp-flotante {
-  position: fixed;
-  top: 7rem;
-  /* Ajustado para no superponerse con el header */
-  left: 1.5rem;
-  width: 60px;
-  height: 60px;
-  background-color: #25d366;
-  /* Color oficial de WhatsApp */
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 998;
-  /* Debajo del reproductor pero encima del resto */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #25d366;
+  right: 1.5rem;
 }
 
-.whatsapp-flotante:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-}
-
-.whatsapp-flotante img {
-  width: 36px;
-  /* Tamaño del ícono dentro del círculo */
-  height: auto;
-}
-
-/*
-  ======================================================
-  RESPONSIVE
-  ======================================================
-*/
-/* Hamburger menu icon (hidden by default on desktop) */
-.menu-toggle {
-  display: none;
-  /* Hidden on desktop */
-  background: none;
+.install-flotante {
+  background: var(--accent-primary);
+  right: 5.5rem; /* Next to whatsapp */
+  color: white;
   border: none;
   cursor: pointer;
-  font-size: 1.5rem;
-  color: var(--color-texto);
-  padding: 0.5rem;
-  z-index: 11;
-  /* Ensure it's above other content */
 }
 
-/* General adjustments for smaller screens */
-@media (max-width: 767px) {
-  body {
-    /* Adjust padding-bottom to account for the mobile floating player */
-    padding-bottom: calc(var(--altura-footer-player) + 1rem);
-  }
-
-  /* Header */
-  #main-header {
-    padding: 1rem 1.5rem;
-    /* Reduce header padding */
-    flex-wrap: wrap;
-    /* Allow items to wrap */
-    justify-content: space-between;
-    /* Space between logo and toggle */
-  }
-
-  .logo {
-    font-size: 1.3rem;
-  }
-
-  .nav-links {
-    display: none;
-    /* Hide nav links by default on mobile */
-    flex-direction: column;
-    width: 100%;
-    background-color: rgba(214, 219, 221, 0.95);
-    /* Background for mobile menu */
-    position: absolute;
-    top: 100%;
-    /* Position below header */
-    left: 0;
-    padding: 1rem 1.5rem;
-    border-top: 1px solid var(--color-gris-medio);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    z-index: 9;
-    /* Below the header but above main content */
-  }
-
-  .nav-links.active {
-    display: flex;
-    /* Show when active */
-  }
-
-  .nav-links li {
-    margin-bottom: 0.8rem;
-  }
-
-  .nav-links a {
-    font-size: 1.1rem;
-    padding: 0.5rem 0;
-    display: block;
-  }
-
-  .cta-nav {
-    /* Ocultamos solo el de cancionero, pero no el de instalar si aparece */
-    display: none;
-  }
-
-  /* Hamburger menu icon */
-  .menu-toggle {
-    display: block;
-    /* Show hamburger icon */
-  }
-
-  /* Hero Section */
-  .hero {
-    padding: 4rem 1.5rem;
-    /* Reduce hero padding */
-  }
-
-  .hero h1 {
-    font-size: clamp(2rem, 8vw, 3rem);
-    /* Adjust clamp for smaller screens */
-    margin-bottom: 1rem;
-  }
-
-  .hero .slogan {
-    font-size: clamp(1rem, 4vw, 1.5rem);
-    margin-bottom: 2rem;
-  }
-
-  .hero .descripcion {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .cta-group {
-    flex-direction: column;
-    /* Stack CTAs vertically */
-    gap: 1rem;
-  }
-
-  .cta-primary,
-  .cta-secondary {
-    width: 100%;
-    /* Full width buttons */
-    max-width: 300px;
-    /* Limit max width */
-    margin: 0 auto;
-  }
-
-  .quick-access-links {
-    flex-direction: column;
-    /* Stack quick access links vertically */
-    gap: 0.8rem;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  .access-link {
-    justify-content: center;
-    /* Center text in access links */
-    padding: 0.8rem;
-    background-color: rgba(255, 255, 255, 0.05);
-    /* Slightly visible background */
-    border-radius: 8px;
-  }
-
-  /* Sections */
-  .productos,
-  .servicios,
-  .eventos-section,
-  .page-content-area {
-    padding: 4rem 1.5rem;
-    /* Reduce section padding */
-  }
-
-  .productos h2,
-  .servicios h2,
-  .eventos-section h2 {
-    font-size: clamp(1.8rem, 6vw, 2.5rem);
-    margin-bottom: 2.5rem;
-  }
-
-  /* Grids */
-  .productos-grid,
-  .book-grid,
-  .devocional-grid,
-  .predicacion-grid {
-    grid-template-columns: 1fr;
-    /* Single column for all grids on mobile */
-    gap: 1.5rem;
-  }
-
-  .predicacion-card,
-  .devocional-card,
-  .book-card {
-    padding: 1.5rem;
-  }
-
-  .predicacion-content h3,
-  .devocional-content h3,
-  .book-card h3 {
-    font-size: 1.2rem;
-  }
-
-  /* Search Container */
-  .search-container {
-    margin: 1.5rem auto 2rem;
-  }
-
-  #search-input,
-  #song-search-input {
-    padding: 0.8rem 1rem 0.8rem 2.5rem;
-    font-size: 0.95rem;
-  }
-
-  .search-container .fa-search {
-    left: 1rem;
-    top: 50%;
-    /* Ensure it's centered vertically */
-    transform: translateY(-50%);
-  }
-
-  /* Pagination */
-  .pagination-container {
-    flex-wrap: wrap;
-    /* Allow buttons to wrap */
-    gap: 0.3rem;
-    margin-top: 2.5rem;
-  }
-
-  .pagination-btn {
-    padding: 0.5rem 0.8rem;
-    font-size: 0.9rem;
-  }
-
-  /* Modal */
-  .modal-content {
-    margin: 10% auto;
-    /* Adjust modal position */
-    padding: 25px;
-  }
-
-  .modal-title {
-    font-size: 1.5rem;
-  }
-
-  .modal-subtitle {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .form-group label {
-    font-size: 0.85rem;
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    padding: 0.7rem 1rem;
-    font-size: 0.95rem;
-  }
-
-  /* Floating Player */
-  .floating-player {
-    bottom: 0;
-    /* Stick to the very bottom */
-    right: 0;
-    left: 0;
-    /* Make it full width */
-    width: 100%;
-    border-radius: 0;
-    /* No rounded corners */
-    padding: 0.75rem 1rem;
-    /* Más padding vertical */
-    justify-content: center;
-    /* Center content */
-    gap: 0.8rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
-    opacity: 1;
-    /* Siempre opaco en móvil */
-  }
-
-  .floating-player .live-tag {
-    font-size: 0.85rem;
-  }
-
-  .floating-player audio {
-    width: 200px;
-    /* Un poco más grande en móvil */
-    height: 40px;
-  }
-
-  .floating-player:hover audio {
-    width: 200px;
-    /* No change on hover for mobile */
-  }
-
-  /* Footer */
-  #main-footer {
-    padding: 2rem 1.5rem;
-  }
-
-  .footer-social {
-    margin-bottom: 1rem;
-  }
-
-  .footer-social p {
-    margin-bottom: 0.8rem;
-  }
-
-  .footer-info p {
-    font-size: 0.9rem;
-  }
-
-  /* Ajustes de Posición Flotante en Móvil */
-  /* PWA Install Button: Arriba del reproductor, a la derecha */
-  .install-flotante {
-    top: auto;
-    bottom: calc(var(--altura-footer-player) + 6rem);
-    /* Apilado sobre el botón de WhatsApp */
-    right: 1.5rem;
-    left: auto;
-  }
-
-  /* WhatsApp Button: Arriba del reproductor, a la izquierda */
-  /* CORRECCIÓN: Movido a la derecha para apilar con el botón de instalación */
-  .whatsapp-flotante {
-    right: auto;
-    left: 1.5rem;
-    top: auto;
-    bottom: calc(var(--altura-footer-player) + 1.5rem);
-    /* Arriba del reproductor */
-  }
+.whatsapp-flotante:hover, .install-flotante:hover {
+  transform: scale(1.1);
 }
 
-/* Specific adjustment for very small screens if needed, e.g., < 375px */
-@media (max-width: 374px) {
-  .floating-player audio {
-    width: 160px;
-    /* Ajuste para pantallas muy pequeñas */
-  }
+.whatsapp-flotante img { width: 30px; }
+.install-flotante i { font-size: 1.5rem; }
 
-  /* Ajustar la posición de los botones flotantes en pantallas muy pequeñas para que no se superpongan */
-  .install-flotante,
-  .whatsapp-flotante {
-    width: 50px;
-    height: 50px;
-    bottom: calc(var(--altura-footer-player) + 1rem);
-    /* Un poco más cerca del borde */
-  }
-}
-
-/* NOTA: La media query para min-width: 768px fue eliminada por ser redundante. */
-/* Los estilos de escritorio son los estilos base y se aplican automáticamente en pantallas grandes. */
-
-/*
-  ======================================================
-  MODAL DE INSTALACIÓN PWA
-  ======================================================
-*/
-.pwa-modal {
-  display: none;
-  /* Oculto por defecto */
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  align-items: center;
-  /* Centrado vertical */
-  justify-content: center;
-}
-
-.pwa-modal-content {
-  background-color: var(--color-fondo);
-  padding: 2.5rem;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 450px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-  animation: fadeInScale 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* --- Estilos para Botones de Compartir --- */
-/* Estilo para íconos de redes sociales personalizados (imágenes) */
-.social-icon-img {
-  height: 36px;
-  /* Aumentar el tamaño del ícono */
-  width: auto;
-  vertical-align: middle;
-  /* Asegura una buena alineación vertical */
-  transition: opacity 0.3s ease;
-}
-
+/* ======================================================
+  FOOTER
+====================================================== */
 #main-footer {
-  flex-direction: column;
-  /* Apilar elementos verticalmente */
-  gap: 1rem;
-  /* Espacio entre la información y el ícono */
-  padding: 2rem 1.5rem;
-  /* Ajustar padding */
+  background: var(--bg-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
-.footer-info {
-  text-align: center;
+#main-footer a { color: var(--accent-primary); }
+
+/* ======================================================
+  RESPONSIVE
+====================================================== */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  
+  .nav-links {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    background: var(--bg-dark);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transform: translateY(-200%); /* Hidden by default */
+    transition: transform 0.3s ease;
+    z-index: 49;
+  }
+
+  .nav-links.active { transform: translateY(0); }
+  
+  .cta-nav { text-align: center; }
+
+  .hero h1 { font-size: 2.5rem; }
+  
+  .floating-player {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    border-radius: 0;
+    transform: none;
+    max-width: none;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .floating-player audio { width: 60%; }
+  
+  .whatsapp-flotante { bottom: 5rem; right: 1rem; }
+  .install-flotante { bottom: 5rem; right: 5rem; }
+  
+  .evento-card { flex-direction: column; text-align: center; }
 }

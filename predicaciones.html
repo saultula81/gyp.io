@@ -1,180 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Predicaciones | Gracia y Paz Radio</title>
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="manifest" href="manifest.json" />
-    <!-- Meta para el color de la barra de estado en iOS -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#4a90e2" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predicaciones | Gracia y Paz Radio</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="manifest" href="manifest.json" />
+  <!-- Meta para el color de la barra de estado en iOS -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#4a90e2" />
 
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header id="main-header">
-      <div class="logo">GRACIA Y PAZ RADIO</div>
-      <nav aria-label="Navegación principal del sitio">
-        <ul class="nav-links">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="libros.html">Libros Cristianos</a></li>
-          <li><a href="resumidos.html">Resumidos</a></li>
-          <li><a href="predicaciones.html">Predicaciones</a></li>
-          <li><a href="devocional-dia.html">Devocional del día</a></li>
-          <li>
-            <a
-              href="https://acordes.lacuerda.net/musica_cristiana/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="cta-nav"
-              >Cancionero</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <main>
-      <section
-        class="page-content-area"
-        role="main"
-        aria-label="Archivo de Predicaciones"
-      >
-        <h1 style="text-align: center">
-          <i class="fas fa-microphone-alt"></i> Archivo de Predicaciones
-        </h1>
-        <p
-          style="
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header id="main-header">
+    <div class="logo">GRACIA Y PAZ RADIO</div>
+    <nav aria-label="Navegación principal del sitio">
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="libros.html">Libros Cristianos</a></li>
+        <li><a href="resumidos.html">Resumidos</a></li>
+        <li><a href="predicaciones.html">Predicaciones</a></li>
+        <li><a href="devocional-dia.html">Devocional del día</a></li>
+        <li>
+          <a href="https://acordes.lacuerda.net/musica_cristiana/" target="_blank" rel="noopener noreferrer"
+            class="cta-nav">Cancionero</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-content-area" role="main" aria-label="Archivo de Predicaciones">
+      <h1 style="text-align: center">
+        <i class="fas fa-microphone-alt"></i> Archivo de Predicaciones
+      </h1>
+      <p style="
             text-align: center;
             max-width: 800px;
             margin: 0 auto 1rem;
             font-size: 1.1rem;
             opacity: 0.9;
-          "
-        >
-          Explora nuestra biblioteca de sermones y mensajes. Busca por
-          predicador, tema o pasaje bíblico en nuestro archivo automático.
-        </p>
+          ">
+        Explora nuestra biblioteca de sermones y mensajes. Busca por
+        predicador, tema o pasaje bíblico en nuestro archivo automático.
+      </p>
 
-        <div class="search-container">
-          <i class="fas fa-search"></i>
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Buscar predicación..."
-          />
-        </div>
-
-        <!-- El contenedor ahora mostrará tarjetas de playlists -->
-        <div class="playlist-grid" id="playlist-container">
-          <p id="loading-message">Cargando playlists...</p>
-        </div>
-
-        <p
-          id="no-results"
-          style="text-align: center; display: none; margin-top: 2rem"
-        >
-          No se encontraron predicaciones que coincidan con tu búsqueda.
-        </p>
-
-        <div style="text-align: center; margin-top: 4rem">
-          <a href="index.html" class="cta-primary">Volver a Página Principal</a>
-        </div>
-      </section>
-    </main>
-
-    <hr />
-
-    <footer id="main-footer">
-      <div class="footer-info">
-        <p>
-          📍 Emisora Central | ✉️
-          <a href="mailto:RadioGraciayPaz.Online@gmail.com"
-            >contacto@RadioGraciayPaz.com</a
-          >
-        </p>
-        <p>
-          © <time datetime="2025">2025</time> Gracia y Paz Radio — Todos los
-          derechos reservados.
-        </p>
+      <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" id="search-input" placeholder="Buscar predicación..." />
       </div>
-    </footer>
 
-    <div class="floating-player" aria-label="Reproductor de Radio Flotante">
-      <p class="live-tag"><i class="fas fa-signal"></i> EN VIVO</p>
-      <audio id="radio-audio" controls autoplay>
-        <source src="https://stream.zeno.fm/mfer4shs398uv" type="audio/aac" />
-        Tu navegador no soporta el elemento de audio.
-      </audio>
+      <!-- El contenedor ahora mostrará tarjetas de playlists -->
+      <div class="playlist-grid" id="playlist-container">
+        <p id="loading-message">Cargando playlists...</p>
+      </div>
+
+      <p id="no-results" style="text-align: center; display: none; margin-top: 2rem">
+        No se encontraron predicaciones que coincidan con tu búsqueda.
+      </p>
+
+      <div style="text-align: center; margin-top: 4rem">
+        <a href="index.html" class="cta-primary">Volver a Página Principal</a>
+      </div>
+    </section>
+  </main>
+
+  <hr />
+
+  <footer id="main-footer">
+    <div class="footer-info">
+      <p>
+        📍 Emisora Central | ✉️
+        <a href="mailto:RadioGraciayPaz.Online@gmail.com">contacto@RadioGraciayPaz.com</a>
+      </p>
+      <p>
+        © <time datetime="2025">2025</time> Gracia y Paz Radio — Todos los
+        derechos reservados.
+      </p>
     </div>
+  </footer>
 
-    <!-- Botón Flotante de WhatsApp -->
-    <a
-      href="https://api.whatsapp.com/send?phone=+5491166508379&text="
-      class="whatsapp-flotante"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Contactar por WhatsApp"
-    >
-      <img src="icons/wt.png" alt="WhatsApp" />
-    </a>
+  <div class="floating-player" aria-label="Reproductor de Radio Flotante">
+    <p class="live-tag"><i class="fas fa-signal"></i> EN VIVO</p>
+    <audio id="radio-audio" controls autoplay>
+      <source src="https://stream.zeno.fm/mfer4shs398uv" type="audio/aac" />
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+  </div>
 
-    <script src="youtube-loader.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // --- INICIALIZACIÓN GENERAL ---
-        initializeRadioPlayer();
-        registerServiceWorker();
+  <!-- Botón Flotante de WhatsApp -->
+  <a href="https://api.whatsapp.com/send?phone=+5491166508379&text=" class="whatsapp-flotante" target="_blank"
+    rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <img src="icons/wt.png" alt="WhatsApp" />
+  </a>
 
-        // --- CONFIGURACIÓN DE YOUTUBE LOADER ---
-        initializeYouTubePlaylist({
-          apiKey: "AIzaSyAt-gPi1yFCurjJHEgR_nX16cRLTuMY7Po",
-          playlistIds: [
-            "PLqC7qjLP6OD2o8yeev-Y_KZDDkNBgfWo",
-            "PLqC7qjLP6OD2THuvkVxe2YYEp_0Hl4vdM",
-            "PLqC7qjLP6OD0UQmxfHEdHPPa05wS2zGiM",
-            "PLqC7qjLP6OD2JYHSqYxXvZvCxabBCPMHw",
-            "PLKQCbA4ZTCw2Wb37YGyq3TokVoP_WKy1w", // La playlist original
-          ],
-          containerId: "playlist-container",
-          loadingMessageId: "loading-message",
-          searchInputId: "search-input",
-          noResultsId: "no-results",
-          renderAs: "playlists", // ¡Nueva opción!
-        });
+  <script src="youtube-loader.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // --- INICIALIZACIÓN GENERAL ---
+      initializeRadioPlayer();
+      registerServiceWorker();
 
-        // --- FUNCIONES AUXILIARES ---
-        function initializeRadioPlayer() {
-          const radioPlayer = document.getElementById("radio-audio");
-          if (radioPlayer) {
-            radioPlayer.play().catch(() => {
-              // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
-            });
-          }
-        }
-
-        function registerServiceWorker() {
-          if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-              navigator.serviceWorker
-                .register("/sw.js")
-                .then((reg) => console.log("Service worker registrado", reg))
-                .catch((err) =>
-                  console.log("Error al registrar service worker", err)
-                );
-            });
-          }
-        }
+      // --- CONFIGURACIÓN DE YOUTUBE LOADER ---
+      initializeYouTubePlaylist({
+        apiKey: "AIzaSyAt-gPi1yFCurjJHEgR_nX16cRLTuMY7Po",
+        playlistIds: [
+          "PLqC7qjLP6OD2o8yeev-Y_KZDDkNBgfWo",
+          "PLqC7qjLP6OD2THuvkVxe2YYEp_0Hl4vdM",
+          "PLqC7qjLP6OD0UQmxfHEdHPPa05wS2zGiM",
+          "PLqC7qjLP6OD2JYHSqYxXvZvCxabBCPMHw",
+          "PLKQCbA4ZTCw2Wb37YGyq3TokVoP_WKy1w", // La playlist original
+        ],
+        containerId: "playlist-container",
+        loadingMessageId: "loading-message",
+        searchInputId: "search-input",
+        noResultsId: "no-results",
+        renderAs: "playlists", // ¡Nueva opción!
       });
-    </script>
-  </body>
+
+      // --- FUNCIONES AUXILIARES ---
+      function initializeRadioPlayer() {
+        const radioPlayer = document.getElementById("radio-audio");
+        if (radioPlayer) {
+          radioPlayer.play().catch(() => {
+            // El autoplay fue bloqueado, el usuario deberá iniciarlo manualmente.
+          });
+        }
+      }
+
+      function registerServiceWorker() {
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", () => {
+            navigator.serviceWorker
+              .register("./sw.js")
+              .then((reg) => console.log("Service worker registrado", reg))
+              .catch((err) =>
+                console.log("Error al registrar service worker", err)
+              );
+          });
+        }
+      }
+    });
+  </script>
+</body>
+
 </html>
