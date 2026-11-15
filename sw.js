@@ -1,17 +1,13 @@
-const CACHE_NAME = "gyp-radio-cache-v3"; // **Incrementamos la versión del caché**
+const CACHE_NAME = "gyp-radio-cache-v4"; // Incrementamos la versión del caché
 const urlsToCache = [
   "./",
   "./index.html",
   "./style.css",
   "./main.js",
-  "./youtube-loader.js",
   "./manifest.json",
   "./libros.html",
   "./resumidos.html",
-  "./predicaciones.html",
-  "./devocional-dia.html",
   "./cancionero.html",
-  "./playlist-view.html",
   "./icons/icon-192x192.png",
   "./icons/icon-512x512.png",
   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
